@@ -5,8 +5,8 @@ import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Developer Portfolio',
+  description: 'A modern developer portfolio showcasing projects, skills, and experience.',
   generator: 'v0.dev',
 }
 

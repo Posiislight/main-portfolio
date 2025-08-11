@@ -80,6 +80,29 @@
   }
 }
 
+/* Subtle reveal for section dividers */
+.fade-divider {
+  position: relative;
+}
+.fade-divider::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: -1px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, color-mix(in oklab, hsl(var(--border)) 80%, transparent), transparent);
+}
+
+/* Reduce motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

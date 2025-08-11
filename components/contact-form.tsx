@@ -1,42 +1,33 @@
 "use client"
 
-import { useState, useTransition } from "react"
+import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { sendContactMessage } from "@/server/actions"
-import { Loader2, Send } from 'lucide-react'
+import { Send } from 'lucide-react'
 
 type Props = {
   defaultEmail?: string
 }
 
 export function ContactForm({ defaultEmail = "" }: Props) {
-  const [isPending, startTransition] = useTransition()
-  const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(
-    null
-  )
-
-  async function onSubmit(formData: FormData) {
-    setStatus(null)
-    startTransition(async () => {
-      const res = await sendContactMessage(formData)
-      setStatus(res)
-      if (res.ok) {
-        ;(document.getElementById("contact-form") as HTMLFormElement)?.reset()
-      }
-    })
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    
+    const name = formData.get('name')
+    const email = formData.get('email')
+    const message = formData.get('message')
+    
+    const mailtoUrl = `mailto:adelekeolamiposi@gmail.com?subject=Portfolio Contact: ${encodeURIComponent(name as string)}&body=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    )}`
+    
+    window.location.href = mailtoUrl
   }
 
   return (
-    <form id="contact-form" action={onSubmit} className="grid gap-4">
-      <input
-        type="text"
-        name="company"
-        tabIndex={-1}
-        className="hidden"
-        aria-hidden="true"
-      />
+    <form onSubmit={handleSubmit} className="grid gap-4">
       <div className="grid gap-2">
         <label htmlFor="name" className="text-sm font-medium">
           Name
@@ -70,33 +61,11 @@ export function ContactForm({ defaultEmail = "" }: Props) {
       </div>
       <Button
         type="submit"
-        disabled={isPending}
         className="bg-emerald-600 hover:bg-emerald-700"
       >
-        {isPending ? (
-          <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Sending
-          </>
-        ) : (
-          <>
-            <Send className="mr-2 h-4 w-4" />
-            Send Message
-          </>
-        )}
+        <Send className="mr-2 h-4 w-4" />
+        Send Message
       </Button>
-      {status && (
-        <p
-          role="status"
-          className={
-            status.ok
-              ? "text-sm text-emerald-600"
-              : "text-sm text-destructive"
-          }
-        >
-          {status.message}
-        </p>
-      )}
     </form>
   )
 }

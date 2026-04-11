@@ -11,7 +11,9 @@ import { useEffect } from "react"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
 import type { StaticImageData } from "next/image"
 import dondaxpicture from "@/public/dondaxpicture.png"
+import lawangelsscreenshot from "@/public/lawangelsscreenshot.png"
 import taskflowpicture from "@/public/taskflow.png"
+import latiodus from "@/public/latiodus.png"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { ContactForm } from "@/components/contact-form"
 import { ProjectCard } from "@/components/project-card"
@@ -44,17 +46,28 @@ const projects: Project[] = [
     },
   },
   {
-    title: "TaskFlow",
+    title: "LawAngelsUk",
     description:
-      "Project management tool for managing tasks and projects. built with Django, Tailwind CSS, and PostgreSQL.",
-    image: taskflowpicture,
-    tags: ["Django", "Tailwind CSS", "PostgreSQL"],
+      "An educational platform providing mock exams for law students. Features include exam simulations, personalized feedback, referral tracking, and subscription processing.",
+    image: lawangelsscreenshot,
+    tags: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Django", "Stripe", "PostgreSQL"],
     links: {
-      frontend: "https://github.com/Posiislight/Project-management-website-using-django-and-tailwind",
-      
-      demo: "https://project-management-website-using-django.onrender.com",
+      frontend: "https://github.com/Posiislight/lawangelsfrontend",
+      demo: "https://lawangelsuk.com",
     },
   },
+  {
+    title: "Latiodus",
+    description:
+      "A modern web application for a premier dredging and marine operations company. Showcases their equipment fleet, past projects, and core services to prospective clients.",
+    image: latiodus,
+    tags: ["React.js", "Tailwind CSS", "TypeScript"],
+    links: {
+      frontend: "https://github.com/Posiislight/latiodus",
+      demo: "https://latiodus.vercel.app/",
+    },
+  },
+  
  
 ]
 
@@ -71,9 +84,21 @@ const skills: string[] = [
   "MySQL",
   "Python",
   "Vercel",
+  "Stripe",
+  "Supabase",
+  "RAG",
+  "LangChain",
+  "OpenAI",
 ]
 
 const experience = [
+  {
+    role: "Full Stack Engineer",
+    company: "Law Angels",
+    period: "2025 - Present",
+    summary:
+      "Developed a scalable educational platform tailored for law students taking mock exams. Engineered complex features including a robust referral ecosystem, automated payouts utilizing Stripe Connect, programmatic data ingestion logic for exam handling, and a specialized Retrieval-Augmented Generation (RAG) system to provide context-aware legal study assistance.",
+  },
   {
     role: "Backend Developer Intern",
     company: "i4nnova Limited",

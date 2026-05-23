@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   const { name, email, message } = body
 
   const payload = new URLSearchParams({
-    access_key: process.env.WEB3FORMS_KEY ?? "",
+    access_key: process.env.WEB3FORMS_KEY ?? "6ed3a098-16f0-486b-89f9-051ed8f7a9b9",
     name,
     email,
     message,

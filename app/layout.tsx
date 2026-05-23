@@ -5,9 +5,8 @@ import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
-  title: 'Developer Portfolio',
-  description: 'A modern developer portfolio showcasing projects, skills, and experience.',
-  generator: 'v0.dev',
+  title: 'Noble Okorie Chibueze — Full Stack Developer',
+  description: 'Full stack developer building digital products at the intersection of commerce, technology, and scale.',
 }
 
 export default function RootLayout({

@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import Image, { type StaticImageData } from "next/image"
 
 type Project = {
@@ -12,9 +12,6 @@ type Project = {
   image: string | StaticImageData
   tags: string[]
   links: {
-    frontend?: string
-    backend?: string
-    github?: string
     demo?: string
   }
 }
@@ -27,7 +24,7 @@ export function ProjectCard({
     image:
       "/project-preview-ui.png",
     tags: ["Next.js", "TypeScript"],
-    links: { github: "https://github.com", demo: "https://example.com" },
+    links: { demo: "https://example.com" },
   },
 }: {
   project?: Project
@@ -65,39 +62,15 @@ export function ProjectCard({
         </div>
       </CardContent>
       <CardFooter className="flex gap-2">
-        {project.links.frontend && (
-          <Button asChild variant="outline" size="sm">
-            <a href={project.links.frontend} target="_blank" rel="noreferrer">
-              <Github className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
-              Frontend
-            </a>
-          </Button>
-        )}
-        {project.links.backend && (
-          <Button asChild variant="outline" size="sm">
-            <a href={project.links.backend} target="_blank" rel="noreferrer">
-              <Github className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
-              Backend
-            </a>
-          </Button>
-        )}
-        {!project.links.frontend && !project.links.backend && project.links.github && (
-          <Button asChild variant="outline" size="sm">
-            <a href={project.links.github} target="_blank" rel="noreferrer">
-              <Github className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
-              Code
-            </a>
-          </Button>
-        )}
         <Button
           asChild
-          variant="ghost"
+          variant="outline"
           size="sm"
           disabled={!project.links.demo}
         >
           <a href={project.links.demo || "#"} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            Demo
+            Live Demo
           </a>
         </Button>
       </CardFooter>

@@ -1,0 +1,79 @@
+"use client"
+
+import { AnimateOnScroll } from "@/components/animate-on-scroll"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+
+const facts: { label: string; value: string }[] = [
+  { label: "role", value: "Full Stack Developer" },
+  { label: "base", value: "Remote · worldwide" },
+  { label: "focus", value: "Next.js · TypeScript · Django" },
+  { label: "currently", value: "shipping client products & Papertrail" },
+  { label: "status", value: "available for freelance" },
+]
+
+export function AboutSection() {
+  return (
+    <section
+      id="about"
+      aria-label="About"
+      className="container mx-auto px-4 py-14 sm:py-16 md:py-24"
+    >
+      <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:items-center">
+        <AnimateOnScroll className="space-y-4">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
+            01 // about
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight">About Me</h2>
+          <p className="text-muted-foreground">
+            I&apos;m Noble, a full stack developer who cares about the details that make
+            software feel effortless: fast loads, clean interfaces, and backends that
+            hold up under pressure. I build digital products at the intersection of
+            commerce, technology, and scale.
+          </p>
+          <p className="text-muted-foreground">
+            Over the past few years I&apos;ve shipped production work for companies across
+            industries: corporate sites for professional services and manufacturing
+            firms, an AI-powered newsletter platform, an e-mobility company&apos;s web
+            presence, and a full exam-prep platform with payments, referrals, and
+            subscriptions.
+          </p>
+          <p className="text-muted-foreground">
+            When I take on a project, I own it end to end: architecture, UI, database
+            design, integrations, and deployment. My goal is always the same: turn an
+            idea into something robust, fast, and ready for real users.
+          </p>
+        </AnimateOnScroll>
+        <AnimateOnScroll delayMs={100}>
+          <Card className="overflow-hidden border-emerald-600/20 font-mono text-sm">
+            <CardHeader className="flex-row items-center gap-2 space-y-0 border-b bg-muted/50 px-4 py-3">
+              <span aria-hidden="true" className="h-3 w-3 rounded-full bg-red-400" />
+              <span aria-hidden="true" className="h-3 w-3 rounded-full bg-yellow-400" />
+              <span aria-hidden="true" className="h-3 w-3 rounded-full bg-green-400" />
+              <span className="flex-1 text-center text-xs text-muted-foreground">
+                noble@dev: ~
+              </span>
+            </CardHeader>
+            <CardContent className="space-y-2 p-5">
+              <p>
+                <span className="text-emerald-600 dark:text-emerald-400">$</span> whoami
+              </p>
+              {facts.map((f) => (
+                <p key={f.label} className="pl-4">
+                  <span className="text-muted-foreground">{f.label}:</span>{" "}
+                  <span>{f.value}</span>
+                </p>
+              ))}
+              <p className="pt-1">
+                <span className="text-emerald-600 dark:text-emerald-400">$</span>{" "}
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-emerald-500"
+                />
+              </p>
+            </CardContent>
+          </Card>
+        </AnimateOnScroll>
+      </div>
+    </section>
+  )
+}

@@ -3,34 +3,14 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink } from 'lucide-react'
-import Image, { type StaticImageData } from "next/image"
+import { ExternalLink, FileText } from 'lucide-react'
+import Image from "next/image"
+import Link from "next/link"
+import type { CaseStudy } from "@/lib/projects"
 
-type Project = {
-  title: string
-  description: string
-  image: string | StaticImageData
-  tags: string[]
-  links: {
-    demo?: string
-  }
-}
-
-export function ProjectCard({
-  project = {
-    title: "Sample Project",
-    description:
-      "This is a placeholder description for a sample project card. Replace with a real project.",
-    image:
-      "/project-preview-ui.png",
-    tags: ["Next.js", "TypeScript"],
-    links: { demo: "https://example.com" },
-  },
-}: {
-  project?: Project
-}) {
+export function ProjectCard({ project }: { project: CaseStudy }) {
   return (
-    <Card className="group overflow-hidden h-full flex flex-col transition-transform duration-300 hover:translate-y-[-2px] hover:shadow-lg">
+    <Card className="group overflow-hidden h-full flex flex-col transition-colors duration-300 hover:border-emerald-600/40 hover:shadow-xl hover:shadow-emerald-600/10">
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={project.image || "/placeholder.svg"}
@@ -41,6 +21,11 @@ export function ProjectCard({
           priority={false}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {project.status && (
+          <span className="absolute right-3 top-3 rounded border border-emerald-500/40 bg-background/85 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-600 backdrop-blur dark:text-emerald-400">
+            {project.status}
+          </span>
+        )}
       </div>
       <CardHeader>
         <CardTitle className="line-clamp-1 tracking-tight">{project.title}</CardTitle>
@@ -62,16 +47,17 @@ export function ProjectCard({
         </div>
       </CardContent>
       <CardFooter className="flex gap-2">
-        <Button
-          asChild
-          variant="outline"
-          size="sm"
-          disabled={!project.links.demo}
-        >
-          <a href={project.links.demo || "#"} target="_blank" rel="noreferrer">
+        <Button asChild variant="outline" size="sm">
+          <a href={project.demo} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             Live Demo
           </a>
+        </Button>
+        <Button asChild variant="ghost" size="sm">
+          <Link href={`/projects/${project.slug}`}>
+            <FileText className="mr-2 h-4 w-4" />
+            Case Study
+          </Link>
         </Button>
       </CardFooter>
     </Card>

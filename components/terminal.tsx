@@ -286,7 +286,7 @@ export function Terminal() {
               spellCheck={false}
               autoComplete="off"
               aria-label="Terminal input"
-              className="w-full bg-transparent text-neutral-100 caret-emerald-400 outline-none placeholder:text-neutral-600"
+              className="w-full bg-transparent text-[16px] text-neutral-100 caret-emerald-400 outline-none placeholder:text-neutral-600 sm:text-[13px]"
               placeholder="type 'help'"
             />
           </form>

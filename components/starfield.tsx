@@ -5,6 +5,9 @@ import { useEffect, useRef } from "react"
 const KEY = "noble-stars"
 const EVENT = "noble-stars-toggle"
 const LINK_DIST = 110
+const FRAME_MS = 33 // ~30fps: the drift is slow, so this halves the work invisibly
+const ALPHA_BUCKETS = 8
+const HALO_SIZE = 64
 
 export function isStarsEnabled() {
   if (typeof window === "undefined") return true
@@ -27,6 +30,20 @@ type Star = {
   twinkle: number
 }
 
+function makeHaloSprite(rgb: string) {
+  const c = document.createElement("canvas")
+  c.width = c.height = HALO_SIZE
+  const g = c.getContext("2d")
+  if (!g) return c
+  const half = HALO_SIZE / 2
+  const grad = g.createRadialGradient(half, half, 0, half, half, half)
+  grad.addColorStop(0, `rgba(${rgb}, 0.35)`)
+  grad.addColorStop(1, `rgba(${rgb}, 0)`)
+  g.fillStyle = grad
+  g.fillRect(0, 0, HALO_SIZE, HALO_SIZE)
+  return c
+}
+
 export function Starfield() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
@@ -43,6 +60,10 @@ export function Starfield() {
     let raf = 0
     let last = 0
     let stars: Star[] = []
+    let haloSprite: HTMLCanvasElement | null = null
+    let haloIsDark: boolean | null = null
+    // one segment bucket per alpha level so lines stroke in ≤8 batches, not per pair
+    const lineBuckets: number[][] = Array.from({ length: ALPHA_BUCKETS }, () => [])
 
     const newStar = (): Star => {
       const big = Math.random() < 0.12
@@ -58,11 +79,20 @@ export function Starfield() {
       }
     }
 
+    // Mobile browsers resize the viewport on every URL-bar show/hide; only
+    // rebuild the field when the geometry meaningfully changes.
     const resize = () => {
-      canvas.width = parent.clientWidth
-      canvas.height = parent.clientHeight
-      const count = Math.min(110, Math.floor((canvas.width * canvas.height) / 9500))
-      stars = Array.from({ length: count }, newStar)
+      const w = parent.clientWidth
+      const h = parent.clientHeight
+      const widthChanged = Math.abs(w - canvas.width) > 4
+      const heightChanged = Math.abs(h - canvas.height) > 4
+      if (!widthChanged && !heightChanged) return
+      canvas.width = w
+      canvas.height = h
+      const count = Math.min(110, Math.floor((w * h) / 9500))
+      if (widthChanged || Math.abs(count - stars.length) > 10 || stars.length === 0) {
+        stars = Array.from({ length: count }, newStar)
+      }
     }
 
     const isDark = () => document.documentElement.classList.contains("dark")
@@ -73,14 +103,22 @@ export function Starfield() {
         last = t
         return
       }
+      if (t - last < FRAME_MS) return
       const dt = Math.min(0.05, (t - last) / 1000)
       last = t
       const time = t / 1000
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      const rgb = isDark() ? "250, 248, 246" : "28, 25, 23"
+      const dark = isDark()
+      const rgb = dark ? "250, 248, 246" : "28, 25, 23"
+      const lineAlpha = dark ? 0.55 : 0.6
+      if (!haloSprite || haloIsDark !== dark) {
+        haloSprite = makeHaloSprite(rgb)
+        haloIsDark = dark
+      }
 
-      // connection lines
+      // connection lines, batched by alpha bucket
+      for (const bucket of lineBuckets) bucket.length = 0
       for (let i = 0; i < stars.length; i++) {
         const a = stars[i]
         for (let j = i + 1; j < stars.length; j++) {
@@ -89,19 +127,27 @@ export function Starfield() {
           const dy = a.y - b.y
           const d2 = dx * dx + dy * dy
           if (d2 < LINK_DIST * LINK_DIST) {
-            const alpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.45
-            ctx.strokeStyle = `rgba(${rgb}, ${alpha})`
-            ctx.lineWidth = 0.8
-            ctx.beginPath()
-            ctx.moveTo(a.x, a.y)
-            ctx.lineTo(b.x, b.y)
-            ctx.stroke()
+            const strength = 1 - Math.sqrt(d2) / LINK_DIST
+            const idx = Math.min(ALPHA_BUCKETS - 1, Math.floor(strength * ALPHA_BUCKETS))
+            lineBuckets[idx].push(a.x, a.y, b.x, b.y)
           }
         }
       }
+      ctx.lineWidth = 0.8
+      for (let i = 0; i < ALPHA_BUCKETS; i++) {
+        const seg = lineBuckets[i]
+        if (!seg.length) continue
+        ctx.strokeStyle = `rgba(${rgb}, ${(((i + 0.5) / ALPHA_BUCKETS) * lineAlpha).toFixed(3)})`
+        ctx.beginPath()
+        for (let k = 0; k < seg.length; k += 4) {
+          ctx.moveTo(seg[k], seg[k + 1])
+          ctx.lineTo(seg[k + 2], seg[k + 3])
+        }
+        ctx.stroke()
+      }
 
       // stars
-      stars.forEach((s) => {
+      for (const s of stars) {
         s.x += s.vx * dt
         s.y += s.vy * dt
         if (s.x < -10) s.x = canvas.width + 10
@@ -112,21 +158,18 @@ export function Starfield() {
         const shimmer = 0.55 + 0.45 * Math.sin(time * s.twinkle + s.phase)
         const alpha = (s.big ? 0.75 : 0.55) * shimmer
 
-        if (s.big) {
-          const halo = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 7)
-          halo.addColorStop(0, `rgba(${rgb}, ${alpha * 0.35})`)
-          halo.addColorStop(1, `rgba(${rgb}, 0)`)
-          ctx.fillStyle = halo
-          ctx.beginPath()
-          ctx.arc(s.x, s.y, s.r * 7, 0, Math.PI * 2)
-          ctx.fill()
+        if (s.big && haloSprite) {
+          const size = s.r * 14
+          ctx.globalAlpha = alpha
+          ctx.drawImage(haloSprite, s.x - size / 2, s.y - size / 2, size, size)
+          ctx.globalAlpha = 1
         }
 
-        ctx.fillStyle = `rgba(${rgb}, ${alpha})`
+        ctx.fillStyle = `rgba(${rgb}, ${alpha.toFixed(3)})`
         ctx.beginPath()
         ctx.arc(s.x, s.y, s.r * (0.8 + 0.2 * shimmer), 0, Math.PI * 2)
         ctx.fill()
-      })
+      }
     }
 
     const start = () => {
@@ -170,7 +213,7 @@ export function Starfield() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 opacity-55 dark:opacity-50"
+      className="pointer-events-none absolute inset-0 opacity-55 dark:opacity-60"
     />
   )
 }

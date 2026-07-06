@@ -6,6 +6,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
 
+// Web3Forms keys are public by design: they can only send mail to the account owner.
+// The free plan requires submitting from the browser, so this posts directly.
+const WEB3FORMS_ACCESS_KEY = "f04520ce-b227-449c-b64d-cf13388a42b4"
+
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
@@ -16,13 +20,24 @@ export function ContactForm() {
     const form = e.currentTarget
     const data = new FormData(form)
 
+    // Honeypot: real users never fill this hidden field
+    if (data.get("botcheck")) {
+      setStatus("success")
+      form.reset()
+      return
+    }
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Portfolio contact from ${data.get("name")}`,
+          from_name: "noble.dev contact form",
           name: data.get("name"),
           email: data.get("email"),
+          phone: data.get("phone") || "not provided",
           message: data.get("message"),
         }),
       })
@@ -56,6 +71,13 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4">
+      <input
+        type="checkbox"
+        name="botcheck"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="hidden"
+      />
       <div className="grid gap-2">
         <label htmlFor="name" className="text-sm font-medium">
           Name
@@ -67,6 +89,12 @@ export function ContactForm() {
           Email
         </label>
         <Input id="email" name="email" type="email" placeholder="you@example.com" required />
+      </div>
+      <div className="grid gap-2">
+        <label htmlFor="phone" className="text-sm font-medium">
+          Phone <span className="text-muted-foreground">(optional)</span>
+        </label>
+        <Input id="phone" name="phone" type="tel" placeholder="+1 555 000 0000" />
       </div>
       <div className="grid gap-2">
         <label htmlFor="message" className="text-sm font-medium">

@@ -49,6 +49,9 @@ export default function Page() {
       />
       <div aria-hidden="true" className="bg-grid-overlay pointer-events-none fixed inset-0 -z-10" />
       <div aria-hidden="true" className="scanlines-overlay pointer-events-none fixed inset-0 -z-10" />
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
+        <Starfield />
+      </div>
       <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="#" className="glitch-hover font-semibold tracking-tight">
@@ -86,7 +89,6 @@ export default function Page() {
           aria-label="Hero"
           className="relative overflow-hidden border-b"
         >
-          <Starfield />
           <div className="container relative z-10 mx-auto flex flex-col items-center px-4 py-20 text-center sm:py-24 md:py-32">
             <AnimateOnScroll className="flex flex-col items-center space-y-6">
               <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">

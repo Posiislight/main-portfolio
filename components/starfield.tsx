@@ -75,7 +75,7 @@ export function Starfield() {
         y: Math.random() * H,
         vx: (Math.random() - 0.5) * 12,
         vy: (Math.random() - 0.5) * 12,
-        r: big ? 2.5 + Math.random() * 2 : 0.8 + Math.random() * 1.4,
+        r: big ? 2 + Math.random() * 1.6 : 0.7 + Math.random() * 1.2,
         big,
         phase: Math.random() * Math.PI * 2,
         twinkle: 0.8 + Math.random() * 2,
@@ -118,7 +118,7 @@ export function Starfield() {
 
       const dark = isDark()
       const rgb = dark ? "250, 248, 246" : "28, 25, 23"
-      const lineAlpha = dark ? 0.55 : 0.6
+      const lineAlpha = dark ? 0.65 : 0.7
       if (!haloSprite || haloIsDark !== dark) {
         haloSprite = makeHaloSprite(rgb)
         haloIsDark = dark
@@ -140,7 +140,7 @@ export function Starfield() {
           }
         }
       }
-      ctx.lineWidth = 0.8
+      ctx.lineWidth = 1
       for (let i = 0; i < ALPHA_BUCKETS; i++) {
         const seg = lineBuckets[i]
         if (!seg.length) continue
@@ -166,7 +166,7 @@ export function Starfield() {
         const alpha = (s.big ? 0.75 : 0.55) * shimmer
 
         if (s.big && haloSprite) {
-          const size = s.r * 14
+          const size = s.r * 12
           ctx.globalAlpha = alpha
           ctx.drawImage(haloSprite, s.x - size / 2, s.y - size / 2, size, size)
           ctx.globalAlpha = 1

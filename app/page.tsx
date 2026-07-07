@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Mail } from 'lucide-react'
+import { Github, Mail, Phone } from 'lucide-react'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -127,6 +127,11 @@ export default function Page() {
                 <Button asChild variant="ghost" size="icon" aria-label="Email">
                   <a href="mailto:noblenergyy@gmail.com">
                     <Mail className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button asChild variant="ghost" size="icon" aria-label="Phone">
+                  <a href="tel:+2349130129226">
+                    <Phone className="h-5 w-5" />
                   </a>
                 </Button>
               </div>

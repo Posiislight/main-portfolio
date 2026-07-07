@@ -10,6 +10,7 @@ export const ACCENTS = [
   { id: "violet", swatch: "#8b5cf6" },
   { id: "cyan", swatch: "#06b6d4" },
   { id: "gold", swatch: "#f59e0b" },
+  { id: "white", swatch: "linear-gradient(135deg, #ffffff 50%, #171717 50%)" },
 ] as const
 
 export type AccentId = (typeof ACCENTS)[number]["id"]
@@ -71,7 +72,7 @@ export function AccentPicker() {
               className="h-6 w-6 border transition-transform hover:scale-110"
               style={{
                 background: a.swatch,
-                borderColor: active === a.id ? "hsl(var(--foreground))" : "transparent",
+                borderColor: active === a.id ? "hsl(var(--foreground))" : "hsl(var(--border))",
               }}
             />
           ))}

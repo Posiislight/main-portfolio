@@ -15,8 +15,6 @@ const PROJECT_LINKS: Record<string, string> = {
   lawangels: "https://lawangelsuk.com",
   latiodus: "https://latiodus.vercel.app/",
   github: "https://github.com/noblenergyy",
-  twitter: "https://x.com/noblenergyy",
-  linkedin: "https://www.linkedin.com/in/noble-okorie-024b45322",
 }
 
 const HELP: string[] = [
@@ -29,7 +27,7 @@ const HELP: string[] = [
   "  contact           how to reach me",
   "  theme             toggle dark / light",
   "  stars [on|off]    toggle the constellation on the hero",
-  "  color <name>      switch accent (ember, emerald, violet, cyan, gold)",
+  "  color <name>      switch accent (ember, emerald, violet, cyan, gold, white)",
   "  price             what does a project cost?",
   "  clear             clear the screen",
   "  exit              close the terminal",

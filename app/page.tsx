@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Mail, Twitter, Linkedin } from 'lucide-react'
+import { Github, Mail } from 'lucide-react'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -122,16 +122,6 @@ export default function Page() {
                 <Button asChild variant="ghost" size="icon" aria-label="GitHub">
                   <a href="https://github.com/noblenergyy" target="_blank" rel="noreferrer">
                     <Github className="h-5 w-5" />
-                  </a>
-                </Button>
-                <Button asChild variant="ghost" size="icon" aria-label="Twitter">
-                  <a href="https://x.com/noblenergyy" target="_blank" rel="noreferrer">
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                </Button>
-                <Button asChild variant="ghost" size="icon" aria-label="LinkedIn">
-                  <a href="https://www.linkedin.com/in/noble-okorie-024b45322" target="_blank" rel="noreferrer">
-                    <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button asChild variant="ghost" size="icon" aria-label="Email">

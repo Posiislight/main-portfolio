@@ -37,7 +37,7 @@ export function ContactForm() {
           from_name: "noble.dev contact form",
           name: data.get("name"),
           email: data.get("email"),
-          phone: data.get("phone") || "not provided",
+          phone: data.get("phone"),
           message: data.get("message"),
         }),
       })
@@ -92,9 +92,9 @@ export function ContactForm() {
       </div>
       <div className="grid gap-2">
         <label htmlFor="phone" className="text-sm font-medium">
-          Phone <span className="text-muted-foreground">(optional)</span>
+          Phone
         </label>
-        <Input id="phone" name="phone" type="tel" placeholder="+1 555 000 0000" />
+        <Input id="phone" name="phone" type="tel" placeholder="+1 555 000 0000" required />
       </div>
       <div className="grid gap-2">
         <label htmlFor="message" className="text-sm font-medium">

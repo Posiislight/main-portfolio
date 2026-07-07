@@ -96,7 +96,7 @@ export function Starfield() {
       canvas.width = Math.round(w * dpr)
       canvas.height = Math.round(h * dpr)
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      const count = Math.min(110, Math.floor((w * h) / 9500))
+      const count = Math.min(150, Math.floor((w * h) / 7200))
       if (widthChanged || Math.abs(count - stars.length) > 10 || stars.length === 0) {
         stars = Array.from({ length: count }, newStar)
       }

@@ -159,11 +159,11 @@
 
 /* Subtle blueprint grid background */
 .bg-grid-overlay {
-  background-image: linear-gradient(to right, hsl(var(--foreground) / 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--foreground) / 0.045) 1px, transparent 1px);
+  background-image: linear-gradient(to right, hsl(var(--foreground) / 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--foreground) / 0.09) 1px, transparent 1px);
   background-size: 44px 44px;
-  -webkit-mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
-  mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at top, black 45%, transparent 90%);
+  mask-image: radial-gradient(ellipse at top, black 45%, transparent 90%);
 }
 
 /* Glitch hover (name / logo) */

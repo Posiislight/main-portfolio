@@ -162,7 +162,7 @@ export function Starfield() {
         if (s.y < -10) s.y = H + 10
         if (s.y > H + 10) s.y = -10
 
-        const shimmer = 0.45 + 0.55 * Math.sin(time * s.twinkle + s.phase)
+        const shimmer = 0.5 + 0.5 * Math.sin(time * s.twinkle + s.phase)
         const alpha = (s.big ? 0.75 : 0.55) * shimmer
 
         if (s.big && haloSprite) {

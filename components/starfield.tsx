@@ -59,6 +59,9 @@ export function Starfield() {
     let visible = true
     let raf = 0
     let last = 0
+    let W = 0
+    let H = 0
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
     let stars: Star[] = []
     let haloSprite: HTMLCanvasElement | null = null
     let haloIsDark: boolean | null = null
@@ -68,14 +71,14 @@ export function Starfield() {
     const newStar = (): Star => {
       const big = Math.random() < 0.12
       return {
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+        x: Math.random() * W,
+        y: Math.random() * H,
         vx: (Math.random() - 0.5) * 12,
         vy: (Math.random() - 0.5) * 12,
         r: big ? 2.5 + Math.random() * 2 : 0.8 + Math.random() * 1.4,
         big,
         phase: Math.random() * Math.PI * 2,
-        twinkle: 0.6 + Math.random() * 1.6,
+        twinkle: 0.8 + Math.random() * 2,
       }
     }
 
@@ -84,11 +87,15 @@ export function Starfield() {
     const resize = () => {
       const w = parent.clientWidth
       const h = parent.clientHeight
-      const widthChanged = Math.abs(w - canvas.width) > 4
-      const heightChanged = Math.abs(h - canvas.height) > 4
+      const widthChanged = Math.abs(w - W) > 4
+      const heightChanged = Math.abs(h - H) > 4
       if (!widthChanged && !heightChanged) return
-      canvas.width = w
-      canvas.height = h
+      W = w
+      H = h
+      // render at device resolution (capped at 2x) so stars and lines stay crisp
+      canvas.width = Math.round(w * dpr)
+      canvas.height = Math.round(h * dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       const count = Math.min(110, Math.floor((w * h) / 9500))
       if (widthChanged || Math.abs(count - stars.length) > 10 || stars.length === 0) {
         stars = Array.from({ length: count }, newStar)
@@ -107,11 +114,11 @@ export function Starfield() {
       const dt = Math.min(0.05, (t - last) / 1000)
       last = t
       const time = t / 1000
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, W, H)
 
       const dark = isDark()
       const rgb = dark ? "250, 248, 246" : "28, 25, 23"
-      const lineAlpha = dark ? 0.55 : 0.6
+      const lineAlpha = dark ? 0.7 : 0.75
       if (!haloSprite || haloIsDark !== dark) {
         haloSprite = makeHaloSprite(rgb)
         haloIsDark = dark
@@ -133,7 +140,7 @@ export function Starfield() {
           }
         }
       }
-      ctx.lineWidth = 0.8
+      ctx.lineWidth = 0.9
       for (let i = 0; i < ALPHA_BUCKETS; i++) {
         const seg = lineBuckets[i]
         if (!seg.length) continue
@@ -150,13 +157,13 @@ export function Starfield() {
       for (const s of stars) {
         s.x += s.vx * dt
         s.y += s.vy * dt
-        if (s.x < -10) s.x = canvas.width + 10
-        if (s.x > canvas.width + 10) s.x = -10
-        if (s.y < -10) s.y = canvas.height + 10
-        if (s.y > canvas.height + 10) s.y = -10
+        if (s.x < -10) s.x = W + 10
+        if (s.x > W + 10) s.x = -10
+        if (s.y < -10) s.y = H + 10
+        if (s.y > H + 10) s.y = -10
 
-        const shimmer = 0.55 + 0.45 * Math.sin(time * s.twinkle + s.phase)
-        const alpha = (s.big ? 0.75 : 0.55) * shimmer
+        const shimmer = 0.45 + 0.55 * Math.sin(time * s.twinkle + s.phase)
+        const alpha = (s.big ? 0.9 : 0.7) * shimmer
 
         if (s.big && haloSprite) {
           const size = s.r * 14
@@ -213,7 +220,7 @@ export function Starfield() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 opacity-55 dark:opacity-60"
+      className="pointer-events-none absolute inset-0 opacity-65 dark:opacity-70"
     />
   )
 }

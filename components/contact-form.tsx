@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
+import { PhoneInput } from "@/components/phone-input"
 
 // Web3Forms keys are public by design: they can only send mail to the account owner.
 // The free plan requires submitting from the browser, so this posts directly.
@@ -94,7 +95,7 @@ export function ContactForm() {
         <label htmlFor="phone" className="text-sm font-medium">
           Phone
         </label>
-        <Input id="phone" name="phone" type="tel" placeholder="+1 555 000 0000" required />
+        <PhoneInput />
       </div>
       <div className="grid gap-2">
         <label htmlFor="message" className="text-sm font-medium">

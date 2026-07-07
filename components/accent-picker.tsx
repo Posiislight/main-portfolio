@@ -5,12 +5,12 @@ import { Palette } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const ACCENTS = [
+  { id: "white", swatch: "linear-gradient(135deg, #ffffff 50%, #171717 50%)" },
   { id: "ember", swatch: "#ff6b47" },
   { id: "emerald", swatch: "#10b981" },
   { id: "violet", swatch: "#8b5cf6" },
   { id: "cyan", swatch: "#06b6d4" },
   { id: "gold", swatch: "#f59e0b" },
-  { id: "white", swatch: "linear-gradient(135deg, #ffffff 50%, #171717 50%)" },
 ] as const
 
 export type AccentId = (typeof ACCENTS)[number]["id"]
@@ -24,12 +24,12 @@ export function setAccent(id: AccentId) {
 
 export function getAccent(): AccentId {
   const current = document.documentElement.getAttribute("data-accent")
-  return (ACCENTS.find((a) => a.id === current)?.id ?? "ember") as AccentId
+  return (ACCENTS.find((a) => a.id === current)?.id ?? "white") as AccentId
 }
 
 export function AccentPicker() {
   const [open, setOpen] = useState(false)
-  const [active, setActive] = useState<AccentId>("ember")
+  const [active, setActive] = useState<AccentId>("white")
   const rootRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {

@@ -118,7 +118,7 @@ export function Starfield() {
 
       const dark = isDark()
       const rgb = dark ? "250, 248, 246" : "28, 25, 23"
-      const lineAlpha = dark ? 0.7 : 0.75
+      const lineAlpha = dark ? 0.55 : 0.6
       if (!haloSprite || haloIsDark !== dark) {
         haloSprite = makeHaloSprite(rgb)
         haloIsDark = dark
@@ -140,7 +140,7 @@ export function Starfield() {
           }
         }
       }
-      ctx.lineWidth = 0.9
+      ctx.lineWidth = 0.8
       for (let i = 0; i < ALPHA_BUCKETS; i++) {
         const seg = lineBuckets[i]
         if (!seg.length) continue
@@ -163,7 +163,7 @@ export function Starfield() {
         if (s.y > H + 10) s.y = -10
 
         const shimmer = 0.45 + 0.55 * Math.sin(time * s.twinkle + s.phase)
-        const alpha = (s.big ? 0.9 : 0.7) * shimmer
+        const alpha = (s.big ? 0.75 : 0.55) * shimmer
 
         if (s.big && haloSprite) {
           const size = s.r * 14
@@ -220,7 +220,7 @@ export function Starfield() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 opacity-65 dark:opacity-70"
+      className="pointer-events-none absolute inset-0 opacity-55 dark:opacity-60"
     />
   )
 }

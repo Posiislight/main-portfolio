@@ -211,7 +211,7 @@ export function PhoneInput() {
           inputMode="tel"
           value={local}
           onChange={(e) => setLocal(e.target.value)}
-          placeholder={country.dial ? "913 012 9226" : "include your country code"}
+          placeholder={country.dial ? "0000000000" : "include your country code"}
           required
           aria-label="Phone number"
           className="flex-1"

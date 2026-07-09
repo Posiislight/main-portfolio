@@ -13,10 +13,9 @@ import { ContactForm } from "@/components/contact-form"
 import { ProjectCard } from "@/components/project-card"
 import { FunEffects } from "@/components/fun-effects"
 import { AboutSection } from "@/components/about-section"
-import { SkillBars } from "@/components/skill-bars"
+import { SkillsGrid } from "@/components/skills-grid"
 import { Marquee } from "@/components/marquee"
 import { Terminal } from "@/components/terminal"
-import { TestimonialsSection } from "@/components/testimonials-section"
 import { ServicesSection } from "@/components/services-section"
 import { Starfield } from "@/components/starfield"
 import { AccentPicker } from "@/components/accent-picker"
@@ -54,18 +53,21 @@ export default function Page() {
           <Link href="#" className="glitch-hover font-semibold tracking-tight">
             {'<'}noble.dev{'/>'}
           </Link>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <Link href="#about" className="hover:text-foreground">
-              About
+          <nav className="hidden items-center gap-6 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
+            <Link href="#about" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+              about
             </Link>
-            <Link href="#projects" className="hover:text-foreground">
-              Projects
+            <Link href="#projects" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+              projects
             </Link>
-            <Link href="#skills" className="hover:text-foreground">
-              Skills
+            <Link href="#skills" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+              skills
             </Link>
-            <Link href="#contact" className="hover:text-foreground">
-              Contact
+            <Link href="#services" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+              services
+            </Link>
+            <Link href="#contact" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+              contact
             </Link>
           </nav>
           <div className="flex items-center gap-2">
@@ -93,7 +95,7 @@ export default function Page() {
                 <span aria-hidden="true" className="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
                 Available for freelance
               </p>
-              <h1 className="glitch-hover cursor-default text-[12vw] font-bold leading-none tracking-tighter sm:text-6xl md:text-8xl lg:text-9xl">
+              <h1 className="glitch-hover cursor-default whitespace-nowrap text-[clamp(2.25rem,10vw,8.5rem)] font-bold leading-none tracking-tighter">
                 NOBLE<span className="text-emerald-500">.</span>
                 <span className="bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-700 bg-clip-text italic text-transparent">
                   DEV
@@ -108,7 +110,7 @@ export default function Page() {
                 architecture, shipped production-ready.
               </p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
-                <Button asChild size="lg" className="bg-emerald-600 shadow-lg shadow-emerald-600/25 hover:bg-emerald-700">
+                <Button asChild size="lg">
                   <a href="#projects">View Projects</a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
@@ -119,11 +121,6 @@ export default function Page() {
                 </Button>
               </div>
               <div className="flex items-center gap-3 pt-2">
-                <Button asChild variant="ghost" size="icon" aria-label="GitHub">
-                  <a href="https://github.com/noblenergyy" target="_blank" rel="noreferrer">
-                    <Github className="h-5 w-5" />
-                  </a>
-                </Button>
                 <Button asChild variant="ghost" size="icon" aria-label="Email">
                   <a href="mailto:noblenergyy@gmail.com">
                     <Mail className="h-5 w-5" />
@@ -135,9 +132,6 @@ export default function Page() {
                   </a>
                 </Button>
               </div>
-              <p className="hidden pt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/70 md:block">
-                [ press {'`'} to open the terminal ]
-              </p>
             </AnimateOnScroll>
           </div>
         </section>
@@ -190,11 +184,6 @@ export default function Page() {
 
         <Separator className="fade-divider" />
 
-        {/* Testimonials */}
-        <TestimonialsSection />
-
-        <Separator className="fade-divider" />
-
         {/* Skills */}
         <section
           id="skills"
@@ -204,16 +193,16 @@ export default function Page() {
           <AnimateOnScroll>
             <div className="mb-6 sm:mb-8">
               <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-                04 // skills
+                03 // skills
               </p>
               <h2 className="text-3xl font-semibold tracking-tight">
                 Skills and Tools
               </h2>
-              <p className="text-muted-foreground">
-                Character stats, leveled up on real projects.
+              <p className="mt-1 text-muted-foreground">
+                The stack I use to take products from idea to production.
               </p>
             </div>
-            <SkillBars />
+            <SkillsGrid />
           </AnimateOnScroll>
         </section>
 
@@ -232,12 +221,14 @@ export default function Page() {
         >
           <div className="grid gap-8 sm:gap-10 md:grid-cols-2">
             <AnimateOnScroll className="space-y-4">
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-                06 // contact
-              </p>
-              <h2 className="text-3xl font-semibold tracking-tight">
-                Let us build something great
-              </h2>
+              <div>
+                <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
+                  05 // contact
+                </p>
+                <h2 className="text-3xl font-semibold tracking-tight">
+                  Let us build something great
+                </h2>
+              </div>
               <p className="text-muted-foreground">
                 Have a project, job opportunity, or idea in mind? I would love
                 to hear from you. I usually respond within 1 to 2 business days.
@@ -280,19 +271,24 @@ export default function Page() {
           <p>
             {'©'} {new Date().getFullYear()} Noble Okorie Chibueze. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-            <Button asChild size="sm" variant="ghost">
-              <a href="#about">About</a>
-            </Button>
-            <Button asChild size="sm" variant="ghost">
-              <a href="#projects">Projects</a>
-            </Button>
-            <Button asChild size="sm" variant="ghost">
-              <a href="#skills">Skills</a>
-            </Button>
-            <Button asChild size="sm" variant="ghost">
-              <a href="#contact">Contact</a>
-            </Button>
+          <div className="flex flex-col items-center gap-3 md:items-end">
+            <div className="flex items-center gap-5 font-mono text-xs uppercase tracking-[0.2em]">
+              <a href="#about" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+                about
+              </a>
+              <a href="#projects" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+                projects
+              </a>
+              <a href="#skills" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+                skills
+              </a>
+              <a href="#contact" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
+                contact
+              </a>
+            </div>
+            <p className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60 md:block">
+              press {'`'} to open the terminal
+            </p>
           </div>
         </div>
       </footer>

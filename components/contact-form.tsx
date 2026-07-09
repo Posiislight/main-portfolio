@@ -115,7 +115,7 @@ export function ContactForm() {
           Something went wrong. Please try again or email me directly.
         </div>
       )}
-      <Button type="submit" disabled={status === "loading"} className="bg-emerald-600 hover:bg-emerald-700">
+      <Button type="submit" disabled={status === "loading"}>
         {status === "loading" ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />

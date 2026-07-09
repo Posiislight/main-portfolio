@@ -220,7 +220,7 @@ export function PhoneInput() {
       {/* what the form actually submits */}
       <input type="hidden" name="phone" value={combined} />
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-2 w-72 border border-emerald-500/40 bg-background shadow-[3px_3px_0_0_rgb(var(--accent-500))]">
+        <div className="absolute left-0 top-full z-50 mt-2 w-72 border border-emerald-500/40 bg-background shadow-lg">
           <div className="flex items-center gap-2 border-b px-3 py-2">
             <Search className="h-3.5 w-3.5 text-muted-foreground" />
             <input

@@ -233,7 +233,7 @@ export function Terminal() {
         type="button"
         aria-label={open ? "Close terminal" : "Open terminal"}
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center border border-emerald-500 bg-background text-emerald-600 shadow-[3px_3px_0_0_rgb(var(--accent-500))] transition-all duration-150 hover:-translate-x-px hover:-translate-y-px hover:shadow-[4px_4px_0_0_rgb(var(--accent-500))] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:text-emerald-400"
+        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center border border-emerald-500/50 bg-background text-emerald-600 transition-colors hover:bg-emerald-500/10 dark:text-emerald-400"
       >
         {open ? <X className="h-5 w-5" /> : <TerminalSquare className="h-5 w-5" />}
       </button>
@@ -242,7 +242,7 @@ export function Terminal() {
         <div
           role="dialog"
           aria-label="Interactive terminal"
-          className="fixed bottom-20 right-5 z-50 flex w-[min(540px,calc(100vw-2.5rem))] flex-col overflow-hidden border border-emerald-500/50 bg-[#0f0b0a] font-mono text-[13px] text-neutral-200 shadow-[6px_6px_0_0_rgb(var(--accent-500)/0.35)]"
+          className="fixed bottom-20 right-5 z-50 flex w-[min(540px,calc(100vw-2.5rem))] flex-col overflow-hidden border border-emerald-500/50 bg-[#0f0b0a] font-mono text-[13px] text-neutral-200 shadow-2xl"
         >
           <div className="flex items-center gap-1.5 border-b border-emerald-500/20 bg-[#161110] px-3 py-2">
             <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-red-400" />

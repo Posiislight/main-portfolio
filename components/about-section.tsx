@@ -20,10 +20,12 @@ export function AboutSection() {
     >
       <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:items-center">
         <AnimateOnScroll className="space-y-4">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-            01 // about
-          </p>
-          <h2 className="text-3xl font-semibold tracking-tight">About Me</h2>
+          <div>
+            <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
+              01 // about
+            </p>
+            <h2 className="text-3xl font-semibold tracking-tight">About Me</h2>
+          </div>
           <p className="text-muted-foreground">
             I&apos;m Noble, a full stack developer who cares about the details that make
             software feel effortless: fast loads, clean interfaces, and backends that

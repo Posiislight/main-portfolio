@@ -39,7 +39,7 @@ export function ServicesSection() {
     >
       <AnimateOnScroll>
         <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-          05 // services
+          04 // services
         </p>
         <h2 className="text-3xl font-semibold tracking-tight">Work with me</h2>
         <p className="mb-6 mt-1 text-muted-foreground sm:mb-8">
@@ -74,7 +74,7 @@ export function ServicesSection() {
       </div>
 
       <AnimateOnScroll className="mt-10 sm:mt-12">
-        <Button asChild size="lg" className="bg-emerald-600 shadow-lg shadow-emerald-600/25 hover:bg-emerald-700">
+        <Button asChild size="lg">
           <a href="#contact">Start a project</a>
         </Button>
       </AnimateOnScroll>

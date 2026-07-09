@@ -57,7 +57,7 @@ export function AccentPicker() {
         <Palette className="h-5 w-5" />
       </Button>
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 flex gap-2 border border-emerald-500/40 bg-background p-2 shadow-[3px_3px_0_0_rgb(var(--accent-500))]">
+        <div className="absolute right-0 top-full z-50 mt-2 flex gap-2 border border-emerald-500/40 bg-background p-2 shadow-lg">
           {ACCENTS.map((a) => (
             <button
               key={a.id}

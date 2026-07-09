@@ -122,7 +122,7 @@ export default async function CaseStudyPage({
         </section>
 
         <div className="mt-12 flex flex-wrap gap-3 border-t pt-8">
-          <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+          <Button asChild>
             <a href={cs.demo} target="_blank" rel="noreferrer">
               <ExternalLink className="mr-2 h-4 w-4" />
               Visit Live Site

@@ -5,18 +5,20 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none border border-emerald-500 shadow-[3px_3px_0_0_rgb(var(--accent-500))] text-sm font-medium ring-offset-background transition-all duration-150 hover:-translate-x-px hover:-translate-y-px hover:shadow-[4px_4px_0_0_rgb(var(--accent-500))] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none text-sm font-medium ring-offset-background transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default:
+          "border border-transparent bg-emerald-600 text-primary-foreground hover:bg-emerald-700 dark:text-background",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "border border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-emerald-500/50 bg-transparent hover:bg-emerald-500/10",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost:
+          "border border-transparent hover:bg-emerald-500/10",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

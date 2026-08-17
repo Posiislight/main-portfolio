@@ -95,7 +95,7 @@ export function FunEffects() {
     console.log(`%c${banner}`, "color:#ff6b47;font-family:monospace")
     // eslint-disable-next-line no-console
     console.log(
-      "%cYou opened the console. I like you already.\n%cI build reliable, fast, scalable web apps. Let's talk: noblenergyy@gmail.com\nPsst: press ` on the site for a terminal, and try the Konami code.",
+      "%cYou opened the console. I like you already.\n%cI build reliable, fast, scalable web apps. Let's talk: adelekeolamiposi@gmail.com\nPsst: press ` on the site for a terminal, and try the Konami code.",
       "color:#ff6b47;font-size:14px;font-weight:bold",
       "color:#888;font-size:12px",
     )

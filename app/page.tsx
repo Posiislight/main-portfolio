@@ -51,7 +51,7 @@ export default function Page() {
       <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="#" className="glitch-hover font-semibold tracking-tight">
-            {'<'}noble.dev{'/>'}
+            {'<'}posi.dev{'/>'}
           </Link>
           <nav className="hidden items-center gap-6 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
             <Link href="#about" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
@@ -72,7 +72,7 @@ export default function Page() {
           </nav>
           <div className="flex items-center gap-2">
             <Button asChild variant="ghost" size="icon" aria-label="GitHub">
-              <a href="https://github.com/noblenergyy" target="_blank" rel="noreferrer">
+              <a href="https://github.com/Posiislight" target="_blank" rel="noreferrer">
                 <Github className="h-5 w-5" />
               </a>
             </Button>
@@ -91,12 +91,8 @@ export default function Page() {
           <Starfield />
           <div className="container relative z-10 mx-auto flex flex-col items-center px-4 py-20 text-center sm:py-24 md:py-32">
             <AnimateOnScroll className="flex flex-col items-center space-y-6">
-              <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-                <span aria-hidden="true" className="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                Available for freelance
-              </p>
               <h1 className="glitch-hover cursor-default whitespace-nowrap text-[clamp(2.25rem,10vw,8.5rem)] font-bold leading-none tracking-tighter">
-                NOBLE<span className="text-emerald-500">.</span>
+                POSI<span className="text-emerald-500">.</span>
                 <span className="bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-700 bg-clip-text italic text-transparent">
                   DEV
                 </span>
@@ -105,9 +101,9 @@ export default function Page() {
                 Full Stack Developer · reliable · fast · scalable
               </p>
               <p className="max-w-xl text-balance text-muted-foreground">
-                I build digital products at the intersection of commerce, technology,
-                and scale: modern web apps with React, Next.js, and clean backend
-                architecture, shipped production-ready.
+                I build AI-powered products on cloud infrastructure that holds up in
+                production: React and Next.js on the surface, thoughtful system design
+                and scalable backend architecture underneath.
               </p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
                 <Button asChild size="lg">
@@ -122,7 +118,7 @@ export default function Page() {
               </div>
               <div className="flex items-center gap-3 pt-2">
                 <Button asChild variant="ghost" size="icon" aria-label="Email">
-                  <a href="mailto:noblenergyy@gmail.com">
+                  <a href="mailto:adelekeolamiposi@gmail.com">
                     <Mail className="h-5 w-5" />
                   </a>
                 </Button>
@@ -166,7 +162,7 @@ export default function Page() {
             </div>
             <div className="hidden md:flex gap-2">
               <Button asChild variant="outline">
-                <a href="https://github.com/noblenergyy" target="_blank" rel="noreferrer">
+                <a href="https://github.com/Posiislight" target="_blank" rel="noreferrer">
                   <Github className="mr-2 h-4 w-4" />
                   GitHub
                 </a>
@@ -235,13 +231,13 @@ export default function Page() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild variant="outline">
-                  <a href="mailto:noblenergyy@gmail.com">
+                  <a href="mailto:adelekeolamiposi@gmail.com">
                     <Mail className="mr-2 h-4 w-4" />
-                    noblenergyy@gmail.com
+                    adelekeolamiposi@gmail.com
                   </a>
                 </Button>
                 <Button asChild variant="ghost">
-                  <a href="https://github.com/noblenergyy" target="_blank" rel="noreferrer">
+                  <a href="https://github.com/Posiislight" target="_blank" rel="noreferrer">
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </a>
@@ -269,7 +265,7 @@ export default function Page() {
       >
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4 pt-6 pb-24 md:pr-24 md:pb-6">
           <p>
-            {'©'} {new Date().getFullYear()} Noble Okorie Chibueze. All rights reserved.
+            {'©'} {new Date().getFullYear()} Adeleke Olamiposi Samuel. All rights reserved.
           </p>
           <div className="flex flex-col items-center gap-3 md:items-end">
             <div className="flex items-center gap-5 font-mono text-xs uppercase tracking-[0.2em]">

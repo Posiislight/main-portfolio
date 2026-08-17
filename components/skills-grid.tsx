@@ -12,12 +12,33 @@ const skillGroups: { title: string; description: string; skills: string[] }[] = 
   {
     title: "Backend",
     description: "APIs and data layers built to stay reliable under load.",
-    skills: ["Node.js", "Python", "Django", "PostgreSQL", "MySQL"],
+    skills: [
+      "Node.js",
+      "Python",
+      "Django",
+      "Java",
+      "Ruby",
+      "C",
+      "C++",
+      "PostgreSQL",
+      "MySQL",
+    ],
   },
   {
     title: "Tools & Integrations",
     description: "Payments, auth, AI, and deployment wired in cleanly.",
-    skills: ["Stripe", "Supabase", "OpenAI", "Git", "Vercel"],
+    skills: [
+      "Stripe",
+      "Vercel",
+      "Git",
+      "GitHub Actions",
+      "Docker",
+      "AWS",
+      "Supabase",
+      "OpenAI",
+      "Redis",
+      "Linux",
+    ],
   },
 ]
 

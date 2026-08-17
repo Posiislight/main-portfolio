@@ -13,14 +13,14 @@ const PROJECT_LINKS: Record<string, string> = {
   papertrail: "https://papertrail-news.vercel.app/",
   dondax: "https://dondaxlimited.com",
   lawangels: "https://lawangelsuk.com",
-  latiodus: "https://latiodus.vercel.app/",
-  github: "https://github.com/noblenergyy",
+  docny: "https://docny.io",
+  github: "https://github.com/Posiislight",
 }
 
 const HELP: string[] = [
   "available commands:",
   "  help              show this list",
-  "  whoami            about Noble",
+  "  whoami            about Posi",
   "  projects          list featured projects",
   "  open <name>       open a project or profile (e.g. open papertrail)",
   "  skills            list the stack",
@@ -31,13 +31,13 @@ const HELP: string[] = [
   "  price             what does a project cost?",
   "  clear             clear the screen",
   "  exit              close the terminal",
-  "  sudo hire-noble   you know you want to",
+  "  sudo hire-posi    you know you want to",
 ]
 
 export function Terminal() {
   const [open, setOpen] = useState(false)
   const [lines, setLines] = useState<Line[]>([
-    { kind: "ok", text: "noble.dev terminal v1.0.0" },
+    { kind: "ok", text: "posi.dev terminal v1.0.0" },
     { kind: "out", text: "type 'help' to get started." },
   ])
   const [input, setInput] = useState("")
@@ -72,19 +72,20 @@ export function Terminal() {
         case "whoami":
         case "about":
           out(
-            "Noble Okorie Chibueze",
+            "Adeleke Olamiposi Samuel",
             "full stack developer · remote, worldwide",
+            "backend · cloud · ai · full stack",
             "React, Next.js, TypeScript on the front. Node.js, Django, PostgreSQL behind.",
-            "status: available for freelance",
+            "status: available for freelance projects",
           )
           break
         case "projects":
           out(
             "the-hague-industries   corporate site        [SHIPPED]",
             "papertrail             AI newsletter         [IN PROGRESS]",
-            "dondax                 e-mobility site       [SHIPPED]",
-            "lawangels              exam-prep platform    [SHIPPED]",
-            "latiodus               marine operations     [SHIPPED]",
+            "dondax                 electric motorcycles  [SHIPPED]",
+            "lawangels              sqe prep platform     [SHIPPED]",
+            "docny                  ai docs platform      [IN PROGRESS]",
             "",
             "try: open papertrail",
           )
@@ -95,19 +96,19 @@ export function Terminal() {
             window.open(PROJECT_LINKS[key], "_blank", "noopener")
             ok(`opening ${key}...`)
           } else {
-            err(`unknown target: ${arg || "(none)"}. try: hague, papertrail, dondax, lawangels, latiodus, github`)
+            err(`unknown target: ${arg || "(none)"}. try: hague, papertrail, dondax, lawangels, docny, github`)
           }
           break
         }
         case "skills":
           out(
             "frontend:  react, next.js, typescript, tailwind css",
-            "backend:   node.js, python, django, postgresql",
-            "tools:     stripe, supabase, openai, git, vercel",
+            "backend:   node.js, python, django, java, ruby, c, c++, postgresql",
+            "tools:     stripe, vercel, git, docker, aws, supabase, openai, redis",
           )
           break
         case "contact":
-          out("email:  noblenergyy@gmail.com", "form:   scroll down, it works.")
+          out("email:  adelekeolamiposi@gmail.com", "form:   scroll down, it works.")
           break
         case "theme": {
           const next = resolvedTheme === "dark" ? "light" : "dark"
@@ -138,7 +139,7 @@ export function Terminal() {
         }
         case "price":
         case "pricing":
-          out("text me lol  email: noblenergyy@gmail.com")
+          out("text me lol  email: adelekeolamiposi@gmail.com")
           break
         case "clear":
           setLines([])
@@ -148,7 +149,7 @@ export function Terminal() {
           setOpen(false)
           break
         case "sudo":
-          if (arg.includes("hire-noble")) {
+          if (arg.includes("hire-posi")) {
             ok("[sudo] password for guest: ********", "ACCESS GRANTED.", "redirecting to contact form...")
             window.setTimeout(() => {
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
@@ -248,7 +249,7 @@ export function Terminal() {
             <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-red-400" />
             <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
             <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-green-400" />
-            <span className="flex-1 text-center text-[11px] text-neutral-500">noble@dev: ~</span>
+            <span className="flex-1 text-center text-[11px] text-neutral-500">posi@dev: ~</span>
           </div>
           <div ref={bodyRef} className="h-72 overflow-y-auto p-3 leading-relaxed">
             {lines.map((line, i) => (

@@ -18,7 +18,7 @@ export type AccentId = (typeof ACCENTS)[number]["id"]
 export function setAccent(id: AccentId) {
   document.documentElement.setAttribute("data-accent", id)
   try {
-    window.localStorage.setItem("noble-accent", id)
+    window.localStorage.setItem("posi-accent", id)
   } catch {}
 }
 

@@ -35,7 +35,7 @@ export function ContactForm() {
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           subject: `Portfolio contact from ${data.get("name")}`,
-          from_name: "noble.dev contact form",
+          from_name: "posi.dev contact form",
           name: data.get("name"),
           email: data.get("email"),
           phone: data.get("phone"),

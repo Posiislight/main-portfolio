@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react"
 
-const KEY = "noble-stars"
-const EVENT = "noble-stars-toggle"
+const KEY = "posi-stars"
+const EVENT = "posi-stars-toggle"
 const LINK_DIST = 110
 const FRAME_MS = 33 // ~30fps: the drift is slow, so this halves the work invisibly
 const ALPHA_BUCKETS = 8

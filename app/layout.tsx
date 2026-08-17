@@ -8,8 +8,8 @@ const heading = Space_Grotesk({ subsets: ['latin'], variable: '--font-heading' }
 const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
-  title: 'Noble Okorie Chibueze | Full Stack Developer',
-  description: 'Full stack developer building digital products at the intersection of commerce, technology, and scale.',
+  title: 'Adeleke Olamiposi Samuel | Full Stack Developer',
+  description: 'Full stack developer building AI-powered products on cloud infrastructure, with a focus on backend architecture and system design.',
 }
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{var a=localStorage.getItem('noble-accent');if(a)document.documentElement.setAttribute('data-accent',a)}catch(e){}",
+              "try{var a=localStorage.getItem('posi-accent');if(a)document.documentElement.setAttribute('data-accent',a)}catch(e){}",
           }}
         />
       </head>
@@ -35,7 +35,7 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          storageKey="noble-theme"
+          storageKey="posi-theme"
           disableTransitionOnChange
         >
           {children}

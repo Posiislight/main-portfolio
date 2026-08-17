@@ -3,7 +3,7 @@ import hagueIndustries from "@/public/hague-industries.png"
 import papertrail from "@/public/papertrail.png"
 import dondaxpicture from "@/public/dondaxpicture.png"
 import lawangelsscreenshot from "@/public/lawangelsscreenshot.png"
-import latiodus from "@/public/latiodus.png"
+import docny from "@/public/docny.png"
 
 export type CaseStudy = {
   slug: string
@@ -61,62 +61,67 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "dondax",
-    title: "DondaX Limited Website",
+    title: "DondaX Limited",
     description:
-      "Website for DondaX Limited, an electric automobile company. Built with React.js, Django, Tailwind CSS, and MySQL.",
+      "The web presence for Nigeria's premier electric motorcycle company: a product site for the GN Model, an order request pipeline, and GNHub, the company's stories and media hub.",
     image: dondaxpicture,
     tags: ["React.js", "TypeScript", "Tailwind", "Django", "MySQL"],
     status: "SHIPPED",
     demo: "https://dondaxlimited.com",
     problem:
-      "DondaX is introducing electric vehicles to markets where the category is still unfamiliar. The site had to educate a first-time audience, showcase the vehicles, and convert curiosity into serious buyer interest.",
+      "DondaX designs and builds electric motorcycles in Nigeria, in a market where the category is still new enough that most buyers have never ridden one. The site had to do three jobs at once: make the case for electric over petrol to a first-time audience, present a single flagship model as a serious product, and turn interest into qualified order requests the sales team could act on.",
     solution:
-      "A React front end backed by Django and MySQL: vehicle showcases that lead with imagery, a company story that builds confidence in a new brand, and inquiry flows that capture leads for the sales team.",
+      "A React front end backed by Django and MySQL, built around one product told well. The GN Model leads with its numbers — 100 km of range, 120 km/h top speed, 2 to 3 hour fast charge — and a colour picker that lets a visitor see the bike they would actually own. GNHub gives the company a place to publish launch news, events, and product updates without a developer in the loop, and a structured order request form captures buyer details, colourway, and delivery destination for follow-up.",
     features: [
-      "Vehicle showcase with rich imagery",
-      "Lead capture and inquiry flows for the sales team",
-      "Django-backed content management",
-      "Responsive design for a mobile-first audience",
+      "GN Model showcase with live specs and a three-colourway picker",
+      "Multi-step order request form with international delivery details",
+      "GNHub: a filterable stories, media, and updates hub",
+      "Django-backed content management for news and product data",
+      "Mobile-first design for an audience that browses on phones",
     ],
   },
   {
     slug: "lawangels",
-    title: "LawAngelsUk",
+    title: "Law Angels UK",
     description:
-      "An educational platform providing mock exams for law students. Features exam simulations, personalized feedback, referral tracking, and subscription processing.",
+      "A complete SQE preparation platform for aspiring UK solicitors: mock exams, an AI tutor, textbooks with audio, and tiered subscription billing.",
     image: lawangelsscreenshot,
     tags: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Django", "Stripe", "PostgreSQL"],
     status: "SHIPPED",
     demo: "https://lawangelsuk.com",
     problem:
-      "Law students preparing for high-stakes exams needed realistic practice with meaningful feedback, and the business behind it needed subscriptions, referrals, and payments handled reliably from day one.",
+      "The Solicitors Qualifying Examination is the gate every aspiring UK solicitor has to pass, and candidates preparing for it — including retakers and overseas lawyers converting to the UK route — were stitching together textbooks, scattered practice questions, and guesswork about whether they were on track. The business behind the platform needed the other half solved too: recurring subscriptions, tiered access, and payments working reliably from launch.",
     solution:
-      "A complete platform: a timed exam simulation engine with personalized feedback, referral tracking to fuel growth, and Stripe-powered subscription billing. Next.js on the front, Django and PostgreSQL behind it.",
+      "A full learning platform rather than a question bank. Timed mock exams reproduce real FLK1 and FLK2 conditions, over 1,500 interactive quiz questions back them up, and progress tracking shows candidates where they stand against their own targets instead of leaving them to guess. Angel AI Tutor answers questions on the material directly, and the content layer spans video lessons, textbooks with an audio reader, flashcards, mind maps, and summary notes. Next.js on the front, Django and PostgreSQL behind it, with Stripe driving monthly, quarterly, and annual subscription tiers.",
     features: [
-      "Timed mock exam simulations",
-      "Personalized feedback and scoring",
-      "Referral tracking and rewards",
-      "Stripe subscription billing",
+      "Timed FLK1 and FLK2 mock exams under real test conditions",
+      "Angel AI Tutor for on-demand help with the material",
+      "1,500+ interactive quiz questions with progress tracking",
+      "Textbooks with audio reader, video lessons, flashcards, and mind maps",
+      "Stripe billing across monthly, quarterly, and annual tiers",
+      "Referral tracking to drive organic growth",
     ],
   },
   {
-    slug: "latiodus",
-    title: "Latiodus",
+    slug: "docny",
+    title: "Docny",
     description:
-      "A modern web application for a premier dredging and marine operations company. Showcases their equipment fleet, past projects, and core services.",
-    image: latiodus,
-    tags: ["React.js", "Tailwind CSS", "TypeScript"],
-    status: "SHIPPED",
-    demo: "https://latiodus.vercel.app/",
+      "An AI-native platform for writing, hosting, and scaling developer documentation. Docny Guardian generates docs straight from a GitHub repository, and a site deploys in under five minutes.",
+    image: docny,
+    tags: ["Next.js", "TypeScript", "MDX", "AI", "GitHub", "Cloud"],
+    status: "IN PROGRESS",
+    demo: "https://docny.io",
     problem:
-      "A premier dredging and marine operations company had a serious fleet and track record, but it lived in PDFs and word of mouth, invisible to the partners and clients evaluating them online.",
+      "Documentation is the first thing a developer sees and the last thing a team wants to maintain. Docs get written once at launch, then drift as the product ships around them, and the tooling makes it worse: static site generators need constant upkeep, hosted platforms fight the git workflow engineers already live in, and nobody owns the gap in between.",
     solution:
-      "A modern web application that puts the physical business on screen: the equipment fleet, past projects, and core services presented with the scale they deserve, built fast and responsive with React and Tailwind CSS.",
+      "Docny closes the loop between the codebase and the docs that describe it. Docny Guardian reads a team's GitHub repository and generates documentation from what is actually there, so the starting point is never a blank page and updates track the code. Writers work in a browser-based WYSIWYG editor with real-time team collaboration, and readers get an embedded AI chat that answers questions against the docs instead of leaving them to search. Sites ship with custom domains and branding, a choice of templates, and analytics on what people are actually reading.",
     features: [
-      "Equipment fleet showcase",
-      "Past project portfolio",
-      "Clear service line breakdown",
-      "Fast, responsive front end",
+      "Docny Guardian: AI documentation generated from a GitHub repository",
+      "Browser-based WYSIWYG editor with real-time team collaboration",
+      "Embedded AI chat that answers reader questions from the docs",
+      "Custom domains, branding, and a template system",
+      "Integrations across GitHub, Jira, Linear, Slack, Notion, and Algolia",
+      "Usage analytics and content auditing",
     ],
   },
 ]

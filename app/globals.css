@@ -233,18 +233,6 @@
   animation: toast-pop 4s ease forwards;
 }
 
-/* Skills marquee */
-@keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-.marquee-track {
-  animation: marquee-scroll 28s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
 /* CRT scanlines (dark mode only, very subtle) */
 .dark .scanlines-overlay {
   background: repeating-linear-gradient(

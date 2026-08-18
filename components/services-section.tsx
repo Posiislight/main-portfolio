@@ -3,31 +3,20 @@
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Rocket, Building2, Plug } from "lucide-react"
 
 const services = [
   {
-    icon: Rocket,
     title: "MVPs & SaaS platforms",
     body: "From idea to production: auth, payments, dashboards, and AI features. Everything a product needs to take real users on day one.",
   },
   {
-    icon: Building2,
     title: "Corporate & marketing sites",
     body: "Fast, credible websites that carry a brand's weight. Built to load instantly, rank well, and turn visitors into inquiries.",
   },
   {
-    icon: Plug,
     title: "Platforms & integrations",
     body: "Stripe billing, subscriptions, referral systems, admin panels, and third-party APIs wired into one reliable system.",
   },
-]
-
-const steps = [
-  { n: "01", title: "Scope", body: "We define goals, features, and a timeline. You get a clear spec and a fixed picture of what ships." },
-  { n: "02", title: "Build", body: "I build in weekly increments with live previews, so you watch it come together and steer early." },
-  { n: "03", title: "Ship", body: "Deployment, domains, SEO, and analytics handled. It goes live fast and stays fast." },
-  { n: "04", title: "Support", body: "Post-launch fixes and iteration. The relationship does not end at deploy." },
 ]
 
 export function ServicesSection() {
@@ -43,32 +32,19 @@ export function ServicesSection() {
         </p>
         <h2 className="text-3xl font-semibold tracking-tight">Work with me</h2>
         <p className="mb-6 mt-1 text-muted-foreground sm:mb-8">
-          What I build, and how a project runs from first call to launch.
+          What I build for clients, from first call to launch.
         </p>
       </AnimateOnScroll>
 
-      <div className="mb-10 grid gap-6 md:grid-cols-3 sm:mb-12">
+      <div className="grid gap-6 md:grid-cols-3">
         {services.map((s, i) => (
           <AnimateOnScroll key={s.title} delayMs={80 * i}>
             <Card className="h-full transition-colors hover:border-emerald-600/40">
               <CardContent className="flex h-full flex-col gap-3 p-6">
-                <s.icon aria-hidden="true" className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
                 <h3 className="font-semibold tracking-tight">{s.title}</h3>
                 <p className="text-sm text-muted-foreground">{s.body}</p>
               </CardContent>
             </Card>
-          </AnimateOnScroll>
-        ))}
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step, i) => (
-          <AnimateOnScroll key={step.n} delayMs={80 * i}>
-            <div className="border-l-2 border-emerald-500/50 pl-4">
-              <p className="font-mono text-xs text-emerald-600 dark:text-emerald-400">{step.n}</p>
-              <h3 className="mt-1 font-semibold tracking-tight">{step.title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{step.body}</p>
-            </div>
           </AnimateOnScroll>
         ))}
       </div>

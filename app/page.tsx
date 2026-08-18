@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Mail, Phone } from 'lucide-react'
+import { Github, Mail } from 'lucide-react'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,7 +14,6 @@ import { ProjectCard } from "@/components/project-card"
 import { FunEffects } from "@/components/fun-effects"
 import { AboutSection } from "@/components/about-section"
 import { SkillsGrid } from "@/components/skills-grid"
-import { Marquee } from "@/components/marquee"
 import { Terminal } from "@/components/terminal"
 import { ServicesSection } from "@/components/services-section"
 import { Starfield } from "@/components/starfield"
@@ -101,9 +100,9 @@ export default function Page() {
                 Full Stack Developer · reliable · fast · scalable
               </p>
               <p className="max-w-xl text-balance text-muted-foreground">
-                I build AI-powered products on cloud infrastructure that holds up in
-                production: React and Next.js on the surface, thoughtful system design
-                and scalable backend architecture underneath.
+                I build products that hold up in production: React and Next.js on the
+                surface, thoughtful system design and scalable backend architecture
+                underneath.
               </p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
                 <Button asChild size="lg">
@@ -122,20 +121,10 @@ export default function Page() {
                     <Mail className="h-5 w-5" />
                   </a>
                 </Button>
-                <Button asChild variant="ghost" size="icon" aria-label="Phone">
-                  <a href="tel:+2349130129226">
-                    <Phone className="h-5 w-5" />
-                  </a>
-                </Button>
               </div>
             </AnimateOnScroll>
           </div>
         </section>
-
-        {/* Skills marquee */}
-        <Marquee />
-
-        <Separator className="fade-divider" />
 
         {/* About */}
         <AboutSection />

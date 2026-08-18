@@ -31,20 +31,11 @@ export function AboutSection() {
           </div>
           <p className="text-muted-foreground">
             I&apos;m Posi, a full stack developer who works closest to the parts most
-            people never see: backend services, cloud infrastructure, and the system
-            design decisions that decide whether a product holds up once real traffic
-            arrives. On the front, that work shows up as React and Next.js interfaces
-            that load fast and stay out of the way.
-          </p>
-          <p className="text-muted-foreground">
-            A lot of what I build now involves AI: wiring models into products in ways
-            that are genuinely useful rather than decorative, and designing the data and
-            infrastructure around them so they stay fast and affordable at scale.
-          </p>
-          <p className="text-muted-foreground">
-            When I take on a project, I own it end to end: architecture, APIs, database
-            design, cloud deployment, and the UI on top. My goal is always the same: turn
-            an idea into something robust, fast, and ready for real users.
+            people never see: backend services, infrastructure, and the system design
+            decisions that decide whether a product holds up once real traffic arrives.
+            On the front, that shows up as React and Next.js interfaces that load fast
+            and stay out of the way. I own projects end to end, from architecture and
+            APIs through to deployment and the UI on top.
           </p>
         </AnimateOnScroll>
         <AnimateOnScroll delayMs={100}>

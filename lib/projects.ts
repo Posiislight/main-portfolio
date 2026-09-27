@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image"
 import hagueIndustries from "@/public/hague-industries.png"
-import papertrail from "@/public/papertrail.png"
+import axisbydigenty from "@/public/axisbydigenty.png"
 import dondaxpicture from "@/public/dondaxpicture.png"
 import lawangelsscreenshot from "@/public/lawangelsscreenshot.png"
 import docny from "@/public/docny.png"
@@ -40,23 +40,25 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "papertrail",
-    title: "Papertrail",
+    slug: "axis-by-digenty",
+    title: "Axis by Digenty",
     description:
-      "A newsletter platform bridging deep reading and high-impact writing. AI-powered tools for creators to draft, distribute, and monetize their content.",
-    image: papertrail,
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI"],
-    status: "IN PROGRESS",
-    demo: "https://papertrail-news.vercel.app/",
+      "A school management platform built to simplify results, CBT exams, fees, attendance, and parent communication in one system.",
+    image: axisbydigenty,
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "School ERP"],
+    status: "SHIPPED",
+    demo: "https://axisbydigenty.com",
     problem:
-      "Newsletter writers juggle separate tools to read, draft, distribute, and monetize. The friction between deep reading and high-impact writing breaks the publishing rhythm that creators depend on.",
+      "Running a school should not feel hard. Results are stressful and error-prone, fee tracking is manual, spreadsheets and paper records are hard to maintain, parents lack visibility, and student data is scattered across multiple systems. Axis brings everything into one place so school operations can run with clarity and confidence.",
     solution:
-      "Papertrail brings the whole loop into one platform. AI-assisted drafting works from the sources a writer collects, and distribution and monetization are built in rather than bolted on. Built with Next.js and TypeScript, with OpenAI powering the writing tools.",
+      "Axis is designed as a modern school operating system: a single dashboard for student and parent records, fees, attendance, admissions, exams, and communication. It gives schools a cleaner workflow, faster result processing, and better visibility for staff and parents without the chaos of disconnected tools.",
     features: [
-      "AI-assisted drafting from collected sources",
-      "Integrated publishing and distribution pipeline",
-      "Creator monetization built in",
-      "A reading experience designed for focus",
+      "Student and parent record management",
+      "Classes, subjects, attendance, and admissions",
+      "Computer-based testing and result processing",
+      "Finance, fee collection, invoices, and expense tracking",
+      "Parent portal with fee visibility and results access",
+      "School communication and website customization tools",
     ],
   },
   {

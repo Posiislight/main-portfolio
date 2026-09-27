@@ -10,7 +10,8 @@ type Line = { kind: "in" | "out" | "ok" | "err"; text: string }
 
 const PROJECT_LINKS: Record<string, string> = {
   hague: "https://thehagueindustries.com",
-  papertrail: "https://papertrail-news.vercel.app/",
+  axis: "https://axisbydigenty.com",
+  axisbydigenty: "https://axisbydigenty.com",
   dondax: "https://dondaxlimited.com",
   lawangels: "https://lawangelsuk.com",
   docny: "https://docny.io",
@@ -22,7 +23,7 @@ const HELP: string[] = [
   "  help              show this list",
   "  whoami            about Posi",
   "  projects          list featured projects",
-  "  open <name>       open a project or profile (e.g. open papertrail)",
+  "  open <name>       open a project or profile (e.g. open axis)",
   "  skills            list the stack",
   "  contact           how to reach me",
   "  theme             toggle dark / light",
@@ -82,12 +83,12 @@ export function Terminal() {
         case "projects":
           out(
             "the-hague-industries   corporate site        [SHIPPED]",
-            "papertrail             AI newsletter         [IN PROGRESS]",
+            "axis-by-digenty        school management    [SHIPPED]",
             "dondax                 electric motorcycles  [SHIPPED]",
             "lawangels              sqe prep platform     [SHIPPED]",
             "docny                  ai docs platform      [IN PROGRESS]",
             "",
-            "try: open papertrail",
+            "try: open axis",
           )
           break
         case "open": {
@@ -96,7 +97,7 @@ export function Terminal() {
             window.open(PROJECT_LINKS[key], "_blank", "noopener")
             ok(`opening ${key}...`)
           } else {
-            err(`unknown target: ${arg || "(none)"}. try: hague, papertrail, dondax, lawangels, docny, github`)
+            err(`unknown target: ${arg || "(none)"}. try: hague, axis, dondax, lawangels, docny, github`)
           }
           break
         }

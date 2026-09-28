@@ -13,20 +13,25 @@ export default {
     extend: {
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        heading: ["var(--font-heading)", "var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {
-        // Brand accent, switchable at runtime via data-accent (see globals.css).
-        // All emerald-* classes resolve to the active accent palette.
-        emerald: {
-          300: "rgb(var(--accent-300) / <alpha-value>)",
-          400: "rgb(var(--accent-400) / <alpha-value>)",
-          500: "rgb(var(--accent-500) / <alpha-value>)",
-          600: "rgb(var(--accent-600) / <alpha-value>)",
-          700: "rgb(var(--accent-700) / <alpha-value>)",
-          800: "rgb(var(--accent-800) / <alpha-value>)",
+        // Ledger palette
+        paper: "#f3f0e8",
+        sand: "#e6e1d4",
+        rule: "#d9d4c7",
+        ink: {
+          DEFAULT: "#17160f",
+          soft: "#3d3a32",
+          muted: "#4f4c43",
+          faint: "#5e5b52",
         },
+        bone: {
+          DEFAULT: "#d6d1c3",
+          muted: "#b9b4a6",
+        },
+        moss: "#1e5a43",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

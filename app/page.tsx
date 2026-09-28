@@ -1,282 +1,279 @@
-"use client"
-
-import { Github, Mail } from 'lucide-react'
+import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-import { useEffect } from "react"
-import { AnimateOnScroll } from "@/components/animate-on-scroll"
-import { caseStudies } from "@/lib/projects"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { ContactForm } from "@/components/contact-form"
-import { ProjectCard } from "@/components/project-card"
-import { FunEffects } from "@/components/fun-effects"
-import { AboutSection } from "@/components/about-section"
-import { SkillsGrid } from "@/components/skills-grid"
-import { Terminal } from "@/components/terminal"
-import { ServicesSection } from "@/components/services-section"
-import { Starfield } from "@/components/starfield"
-import { AccentPicker } from "@/components/accent-picker"
+import { featuredStudies, otherStudies, type CaseStudy } from "@/lib/projects"
+import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 
-export default function Page() {
-  useEffect(() => {
-    const click = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (target && target.closest("a[href^='#']")) {
-        const anchor = target.closest("a") as HTMLAnchorElement
-        const id = anchor.getAttribute("href")?.replace("#", "") || ""
-        const el = document.getElementById(id)
-        if (el) {
-          e.preventDefault()
-          el.scrollIntoView({ behavior: "smooth", block: "start" })
-        }
-      }
-    }
-    document.addEventListener("click", click)
-    return () => document.removeEventListener("click", click)
-  }, [])
+const wrap = "mx-auto max-w-[1440px] px-5 md:px-10 lg:px-20"
+const label = "font-mono text-xs uppercase tracking-[0.08em] text-ink-muted md:text-[13px]"
 
+const facts = [
+  { label: "Based", value: "Remote, working worldwide" },
+  { label: "Focus", value: "Backend, cloud, full stack" },
+  { label: "Currently", value: "Building Docny and Law Angels" },
+]
+
+const services = [
+  {
+    title: "MVPs and SaaS platforms",
+    body: "From idea to production: auth, payments, dashboards and AI features. Everything a product needs to take real users on day one.",
+  },
+  {
+    title: "Corporate and marketing sites",
+    body: "Fast, credible websites that carry a brand's weight. Built to load instantly, rank well and turn visitors into enquiries.",
+  },
+  {
+    title: "Platforms and integrations",
+    body: "Stripe billing, subscriptions, referral systems, admin panels and third-party APIs wired into one reliable system.",
+  },
+]
+
+function pad(n: number) {
+  return String(n).padStart(2, "0")
+}
+
+function FeaturedProject({ project, index }: { project: CaseStudy; index: number }) {
   return (
-    <div className="min-h-dvh text-foreground">
-      <FunEffects />
-      <Terminal />
-      <div
+    <article className="flex flex-col gap-5 border-t border-ink pt-5 md:gap-10 md:pt-8">
+      <Link
+        href={`/projects/${project.slug}`}
+        tabIndex={-1}
         aria-hidden="true"
-        className="hero-glow pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgb(var(--accent-500)/0.1),_transparent_60%)] dark:bg-[radial-gradient(ellipse_at_top,_rgb(var(--accent-500)/0.16),_transparent_50%)]"
-      />
-      <div aria-hidden="true" className="bg-grid-overlay pointer-events-none fixed inset-0 -z-10" />
-      <div aria-hidden="true" className="scanlines-overlay pointer-events-none fixed inset-0 -z-10" />
-      <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <Link href="#" className="glitch-hover font-semibold tracking-tight">
-            {'<'}posi.dev{'/>'}
-          </Link>
-          <nav className="hidden items-center gap-6 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
-            <Link href="#about" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-              about
+        className="relative block h-[240px] overflow-hidden rounded-lg bg-sand md:h-[480px] lg:h-[680px]"
+      >
+        <Image
+          src={project.image}
+          alt=""
+          fill
+          sizes="(min-width: 1440px) 1280px, 100vw"
+          className="object-cover"
+          style={{ objectPosition: project.imagePosition }}
+          priority={index === 0}
+        />
+      </Link>
+      <div className="grid gap-5 md:grid-cols-12 md:gap-x-6">
+        <div className="flex flex-col gap-4 md:col-span-5">
+          <div className="flex justify-between gap-6 font-mono text-xs text-ink-muted md:justify-start md:text-[13px]">
+            <span>{pad(index + 1)}</span>
+            <span>
+              {project.status} · {project.category}
+            </span>
+          </div>
+          <h3 className="font-serif text-[40px] leading-none md:text-[64px]">{project.title}</h3>
+        </div>
+        <div className="flex flex-col gap-5 md:col-span-6 md:col-start-7 md:pt-8">
+          <p className="text-base leading-relaxed text-ink-soft md:text-lg">{project.summary}</p>
+          <ul className="flex flex-col gap-2 text-[15px] leading-snug text-ink-soft md:text-base">
+            {project.highlights.map((h) => (
+              <li key={h}>{h}</li>
+            ))}
+          </ul>
+          <div className="flex gap-6 text-base font-medium">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="inline-flex min-h-11 items-center underline underline-offset-4 transition-colors hover:text-moss"
+            >
+              Read the case study
             </Link>
-            <Link href="#projects" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-              projects
-            </Link>
-            <Link href="#skills" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-              skills
-            </Link>
-            <Link href="#services" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-              services
-            </Link>
-            <Link href="#contact" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-              contact
-            </Link>
-          </nav>
-          <div className="flex items-center gap-2">
-            <Button asChild variant="ghost" size="icon" aria-label="GitHub">
-              <a href="https://github.com/Posiislight" target="_blank" rel="noreferrer">
-                <Github className="h-5 w-5" />
-              </a>
-            </Button>
-            <AccentPicker />
-            <ThemeToggle />
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center underline underline-offset-4 transition-colors hover:text-moss"
+            >
+              Visit site
+            </a>
           </div>
         </div>
-      </header>
+      </div>
+    </article>
+  )
+}
 
-      <main role="main">
-        {/* Hero */}
-        <section
-          aria-label="Hero"
-          className="relative overflow-hidden border-b"
-        >
-          <Starfield />
-          <div className="container relative z-10 mx-auto flex flex-col items-center px-4 py-20 text-center sm:py-24 md:py-32">
-            <AnimateOnScroll className="flex flex-col items-center space-y-6">
-              <h1 className="glitch-hover cursor-default whitespace-nowrap text-[clamp(2.25rem,10vw,8.5rem)] font-bold leading-none tracking-tighter">
-                POSI<span className="text-emerald-500">.</span>
-                <span className="bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-700 bg-clip-text italic text-transparent">
-                  DEV
-                </span>
-              </h1>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground sm:text-sm">
-                Full Stack Developer · reliable · fast · scalable
-              </p>
-              <p className="max-w-xl text-balance text-muted-foreground">
-                I build products that hold up in production: React and Next.js on the
-                surface, thoughtful system design and scalable backend architecture
-                underneath.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
-                <Button asChild size="lg">
-                  <a href="#projects">View Projects</a>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <a href="#contact">
-                    <Mail className="mr-2 h-4 w-4" />
-                    Contact Me
-                  </a>
-                </Button>
-              </div>
-              <div className="flex items-center gap-3 pt-2">
-                <Button asChild variant="ghost" size="icon" aria-label="Email">
-                  <a href="mailto:adelekeolamiposi@gmail.com">
-                    <Mail className="h-5 w-5" />
-                  </a>
-                </Button>
-              </div>
-            </AnimateOnScroll>
+function ProjectCard({ project, index }: { project: CaseStudy; index: number }) {
+  return (
+    <article className="flex flex-col gap-3.5 md:gap-4">
+      <Link
+        href={`/projects/${project.slug}`}
+        tabIndex={-1}
+        aria-hidden="true"
+        className="relative block h-[200px] overflow-hidden rounded-lg bg-sand md:h-[280px]"
+      >
+        <Image
+          src={project.image}
+          alt=""
+          fill
+          sizes="(min-width: 768px) 33vw, 100vw"
+          className="object-cover transition-transform duration-500 hover:scale-[1.02]"
+          style={{ objectPosition: project.imagePosition }}
+        />
+      </Link>
+      <div className="flex justify-between font-mono text-xs text-ink-muted md:text-[13px]">
+        <span>{pad(index + 1)}</span>
+        <span>
+          {project.status} · {project.category}
+        </span>
+      </div>
+      <h3 className="font-serif text-[32px] leading-none md:text-4xl">
+        <Link href={`/projects/${project.slug}`} className="transition-colors hover:text-moss">
+          {project.title}
+        </Link>
+      </h3>
+      <p className="text-[15px] leading-relaxed text-ink-soft md:text-base">{project.summary}</p>
+    </article>
+  )
+}
+
+export default function Page() {
+  return (
+    <div className="min-h-dvh">
+      <SiteHeader />
+
+      <main>
+        {/* Intro */}
+        <section id="top" aria-label="Intro" className="border-b border-rule">
+          <div className={`${wrap} grid gap-8 py-12 md:grid-cols-12 md:gap-x-6 md:gap-y-16 md:pb-24 md:pt-[120px]`}>
+            <div className="flex items-center gap-2 font-mono text-xs text-ink-muted md:hidden">
+              <span className="h-2 w-2 rounded-full bg-moss" aria-hidden="true" />
+              Open to freelance projects
+            </div>
+            <p className={`${label} hidden md:col-span-12 md:block`}>
+              Adeleke Olamiposi Samuel — Full stack developer
+            </p>
+            <h1 className="font-serif text-[56px] leading-none tracking-[-0.02em] md:col-span-11 md:text-[96px] md:leading-[0.95] lg:col-span-10 lg:text-[128px] lg:tracking-[-0.025em]">
+              I build the parts of a product that <em className="text-moss">have to hold up.</em>
+            </h1>
+            <p className="text-[17px] leading-relaxed text-ink-soft md:col-span-6 md:text-xl lg:col-span-5">
+              Backend services, infrastructure and the system design calls that decide whether a
+              product survives real traffic. On the surface, React and Next.js interfaces that load
+              fast and stay out of the way.
+            </p>
+            <div className="flex flex-col gap-3 md:col-span-5 md:col-start-8 md:flex-row md:items-end">
+              <a
+                href="#work"
+                className="inline-flex h-[52px] items-center justify-center rounded-full bg-ink px-7 text-base font-medium text-paper transition-colors hover:bg-moss"
+              >
+                See the work
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex h-[52px] items-center justify-center rounded-full border border-ink px-7 text-base font-medium transition-colors hover:border-moss hover:text-moss"
+              >
+                Start a project
+              </a>
+            </div>
+            <dl className="flex flex-col md:col-span-12 md:grid md:grid-cols-3 md:gap-6 md:border-t md:border-rule md:pt-8">
+              {facts.map((f, i) => (
+                <div
+                  key={f.label}
+                  className={`flex justify-between gap-4 border-t border-rule py-3.5 md:flex-col md:justify-start md:gap-1.5 md:border-0 md:py-0 ${
+                    i === facts.length - 1 ? "border-b md:border-b-0" : ""
+                  }`}
+                >
+                  <dt className="font-mono text-xs uppercase tracking-[0.08em] text-ink-faint">{f.label}</dt>
+                  <dd className="text-right text-[15px] md:text-left md:text-[17px]">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        {/* Work */}
+        <section id="work" aria-label="Selected work" className="scroll-mt-4">
+          <div className={`${wrap} flex flex-col gap-14 py-16 md:gap-[72px] md:pb-[120px] md:pt-28`}>
+            <div className="flex items-end justify-between">
+              <h2 className="font-serif text-5xl leading-none tracking-[-0.015em] md:text-[80px] md:tracking-[-0.02em]">
+                Selected work
+              </h2>
+              <a
+                href="https://github.com/Posiislight"
+                target="_blank"
+                rel="noreferrer"
+                className="hidden text-base underline underline-offset-4 transition-colors hover:text-moss md:inline"
+              >
+                More on GitHub
+              </a>
+            </div>
+
+            {featuredStudies.map((p, i) => (
+              <FeaturedProject key={p.slug} project={p} index={i} />
+            ))}
+
+            <div className="grid gap-10 border-t border-ink pt-5 md:grid-cols-3 md:gap-6 md:pt-8">
+              {otherStudies.map((p, i) => (
+                <ProjectCard key={p.slug} project={p} index={featuredStudies.length + i} />
+              ))}
+            </div>
+
+            <a
+              href="https://github.com/Posiislight"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-[52px] items-center justify-center rounded-full border border-ink text-base font-medium md:hidden"
+            >
+              More on GitHub
+            </a>
           </div>
         </section>
 
         {/* About */}
-        <AboutSection />
-
-        <Separator className="fade-divider" />
-
-        {/* Projects */}
-        <section
-          id="projects"
-          aria-label="Projects"
-          className="container mx-auto px-4 py-14 sm:py-16 md:py-24"
-        >
-          <div className="flex items-end justify-between gap-4 mb-8">
-            <div>
-              <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-                02 // projects
-              </p>
-              <h2 className="text-3xl font-semibold tracking-tight">
-                Featured Projects
-              </h2>
-              <p className="text-muted-foreground">
-                A selection of things I am proud of.
-              </p>
-            </div>
-            <div className="hidden md:flex gap-2">
-              <Button asChild variant="outline">
-                <a href="https://github.com/Posiislight" target="_blank" rel="noreferrer">
-                  <Github className="mr-2 h-4 w-4" />
-                  GitHub
-                </a>
-              </Button>
-            </div>
-          </div>
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {caseStudies.map((p, i) => (
-              <AnimateOnScroll key={p.slug} delayMs={50 * i}>
-                <ProjectCard project={p} />
-              </AnimateOnScroll>
-            ))}
+        <section id="about" aria-label="About" className="bg-ink text-paper">
+          <div className={`${wrap} flex flex-col gap-7 py-[72px] md:grid md:grid-cols-12 md:gap-x-6 md:gap-y-12 md:py-[120px]`}>
+            <p className="font-mono text-xs uppercase tracking-[0.08em] text-bone-muted md:col-span-12 md:text-[13px]">
+              About
+            </p>
+            <p className="font-serif text-[32px] leading-[1.12] tracking-[-0.01em] md:col-span-7 md:text-[44px] lg:text-[56px] lg:leading-[1.08]">
+              I work closest to the parts people never see, and own a project end to end:
+              architecture, APIs, deployment and the UI on top.
+            </p>
+            <p className="text-base leading-relaxed text-bone md:col-span-4 md:col-start-9 md:text-[17px]">
+              I&apos;m Posi. Most of my work is for founders and teams who need one person to take a
+              product from a blank repo to real users, and still be around when it has to scale.
+            </p>
           </div>
         </section>
-
-        <Separator className="fade-divider" />
-
-        {/* Skills */}
-        <section
-          id="skills"
-          aria-label="Skills"
-          className="container mx-auto px-4 py-14 sm:py-16 md:py-24"
-        >
-          <AnimateOnScroll>
-            <div className="mb-6 sm:mb-8">
-              <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-                03 // skills
-              </p>
-              <h2 className="text-3xl font-semibold tracking-tight">
-                Skills and Tools
-              </h2>
-              <p className="mt-1 text-muted-foreground">
-                The stack I use to take products from idea to production.
-              </p>
-            </div>
-            <SkillsGrid />
-          </AnimateOnScroll>
-        </section>
-
-        <Separator className="fade-divider" />
 
         {/* Services */}
-        <ServicesSection />
-
-        <Separator />
+        <section id="services" aria-label="Services" className="border-b border-rule">
+          <div className={`${wrap} flex flex-col gap-10 py-[72px] md:gap-16 md:py-[120px]`}>
+            <h2 className="font-serif text-5xl leading-none tracking-[-0.015em] md:text-[80px] md:tracking-[-0.02em]">
+              What I build
+            </h2>
+            <div className="grid gap-8 md:grid-cols-3 md:gap-6">
+              {services.map((s) => (
+                <div key={s.title} className="flex flex-col gap-3 border-t border-ink pt-5 md:gap-4 md:pt-6">
+                  <h3 className="text-xl font-semibold md:text-[22px]">{s.title}</h3>
+                  <p className="text-[15px] leading-relaxed text-ink-soft md:text-base">{s.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Contact */}
-        <section
-          id="contact"
-          aria-label="Contact"
-          className="container mx-auto px-4 py-14 sm:py-16 md:py-24"
-        >
-          <div className="grid gap-8 sm:gap-10 md:grid-cols-2">
-            <AnimateOnScroll className="space-y-4">
-              <div>
-                <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-                  05 // contact
-                </p>
-                <h2 className="text-3xl font-semibold tracking-tight">
-                  Let us build something great
-                </h2>
-              </div>
-              <p className="text-muted-foreground">
-                Have a project, job opportunity, or idea in mind? I would love
-                to hear from you. I usually respond within 1 to 2 business days.
+        <section id="contact" aria-label="Contact">
+          <div className={`${wrap} flex flex-col gap-7 pb-[72px] pt-20 md:gap-12 md:pb-[120px] md:pt-[140px]`}>
+            <p className={label}>Contact</p>
+            <h2 className="font-serif text-[56px] leading-none tracking-[-0.02em] md:text-[96px] md:leading-[0.95] lg:text-[128px] lg:tracking-[-0.025em]">
+              Have something that <br className="hidden md:block" />
+              needs to <em className="text-moss">hold up?</em>
+            </h2>
+            <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between md:gap-12">
+              <a
+                href="mailto:adelekeolamiposi@gmail.com"
+                className="break-all font-serif text-[26px] underline decoration-1 underline-offset-[6px] transition-colors hover:text-moss md:text-5xl md:underline-offset-8"
+              >
+                adelekeolamiposi@gmail.com
+              </a>
+              <p className="max-w-[360px] text-[15px] leading-relaxed text-ink-soft md:text-base">
+                Projects, roles or a half-formed idea. I reply within one to two business days.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <Button asChild variant="outline">
-                  <a href="mailto:adelekeolamiposi@gmail.com">
-                    <Mail className="mr-2 h-4 w-4" />
-                    adelekeolamiposi@gmail.com
-                  </a>
-                </Button>
-                <Button asChild variant="ghost">
-                  <a href="https://github.com/Posiislight" target="_blank" rel="noreferrer">
-                    <Github className="mr-2 h-4 w-4" />
-                    GitHub
-                  </a>
-                </Button>
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll>
-              <Card className="border-emerald-600/20">
-                <CardHeader>
-                  <CardTitle>Contact Form</CardTitle>
-                  <CardDescription />
-                </CardHeader>
-                <CardContent>
-                  <ContactForm />
-                </CardContent>
-              </Card>
-            </AnimateOnScroll>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer
-        role="contentinfo"
-        className="border-t bg-muted/30 text-sm text-muted-foreground"
-      >
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4 pt-6 pb-24 md:pr-24 md:pb-6">
-          <p>
-            {'©'} {new Date().getFullYear()} Adeleke Olamiposi Samuel. All rights reserved.
-          </p>
-          <div className="flex flex-col items-center gap-3 md:items-end">
-            <div className="flex items-center gap-5 font-mono text-xs uppercase tracking-[0.2em]">
-              <a href="#about" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-                about
-              </a>
-              <a href="#projects" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-                projects
-              </a>
-              <a href="#skills" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-                skills
-              </a>
-              <a href="#contact" className="transition-colors hover:text-emerald-600 dark:hover:text-emerald-400">
-                contact
-              </a>
-            </div>
-            <p className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60 md:block">
-              press {'`'} to open the terminal
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

@@ -196,35 +196,17 @@ export default function Page() {
               className="size-24 rounded-full border border-line object-cover md:size-28"
               priority
             />
-            <p className="text-sm text-fg-muted">Adeleke Olamiposi Samuel — Full stack developer</p>
-            <p className="inline-flex items-center gap-2 text-sm text-fg-muted lg:hidden">
-              <span className="size-2 rounded-full bg-ok" aria-hidden="true" />
-              Open to freelance projects
-            </p>
-            <h1 className="max-w-[18ch] font-serif text-4xl leading-[1.05] tracking-[-0.015em] md:text-6xl">
-              I build the parts of a product that <em className="text-brand">have to hold up.</em>
+            <h1 className="font-serif text-5xl leading-[1.05] tracking-[-0.015em] md:text-[64px]">
+              Hi, I’m <em className="text-brand">Posi</em>.
             </h1>
-            <p className="max-w-[56ch] text-base leading-relaxed text-fg-muted">
-              Backend services, infrastructure and the system design calls that decide whether a
-              product survives real traffic. On the surface, React and Next.js interfaces that load
-              fast and stay out of the way.
+            <p className="max-w-[56ch] text-base leading-relaxed text-fg-muted md:text-lg">
+              I’m a full stack developer. Backend services, infrastructure and the system design
+              calls that decide whether a product survives real traffic, with React and Next.js
+              interfaces on top that load fast and stay out of the way.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="#work" className={`${pill} bg-fg text-canvas hover:bg-brand`}>
-                See the work
-              </a>
-              <a href="#contact" className={`${pill} border border-stroke hover:border-brand hover:text-brand`}>
-                Start a project
-              </a>
-            </div>
-            <dl className="mt-6 grid w-full gap-4 border-t border-line pt-6 md:grid-cols-3 md:gap-6">
-              {facts.map((f) => (
-                <div key={f.label} className="flex flex-col gap-1">
-                  <dt className="text-sm text-fg-muted">{f.label}</dt>
-                  <dd className="text-base">{f.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <a href="#contact" className={`${pill} bg-fg text-canvas hover:bg-brand`}>
+              Contact me
+            </a>
           </div>
         </section>
 
@@ -317,6 +299,15 @@ export default function Page() {
                 I&apos;m Posi. Most of my work is for founders and teams who need one person to take a
                 product from a blank repo to real users, and still be around when it has to scale.
               </p>
+              <p className="pt-4 text-sm text-fg-muted">Adeleke Olamiposi Samuel — Full stack developer</p>
+              <dl className="grid gap-4 border-t border-line pt-6 sm:grid-cols-3 sm:gap-6">
+                {facts.map((f) => (
+                  <div key={f.label} className="flex flex-col gap-1">
+                    <dt className="text-sm text-fg-muted">{f.label}</dt>
+                    <dd className="text-base">{f.value}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </Reveal>
         </section>
@@ -346,6 +337,10 @@ export default function Page() {
               Have something that needs to <em className="text-brand">hold up?</em>
             </h2>
             <CopyEmail email="adelekeolamiposi@gmail.com" className="font-serif text-2xl md:text-4xl" />
+            <p className="inline-flex items-center gap-2 text-sm text-fg-muted">
+              <span className="size-2 rounded-full bg-ok" aria-hidden="true" />
+              Open to freelance projects
+            </p>
             <p className="max-w-[44ch] text-base leading-relaxed text-fg-muted">
               Projects, roles or a half-formed idea. I reply within one to two business days.
             </p>

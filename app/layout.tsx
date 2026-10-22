@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { Instrument_Serif } from 'next/font/google'
+import { Instrument_Serif, Sora, Fraunces, Work_Sans } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 
@@ -11,6 +11,11 @@ const serif = Instrument_Serif({
   style: ['normal', 'italic'],
   variable: '--font-serif',
 })
+
+// Company-name typefaces for the clients row, taken from each company's own site.
+const sora = Sora({ subsets: ['latin'], weight: '800', variable: '--font-sora' })
+const fraunces = Fraunces({ subsets: ['latin'], weight: '600', variable: '--font-fraunces' })
+const workSans = Work_Sans({ subsets: ['latin'], weight: '500', variable: '--font-work-sans' })
 
 export const metadata: Metadata = {
   title: 'Adeleke Olamiposi Samuel | Full Stack Developer',
@@ -26,7 +31,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable} ${sora.variable} ${fraunces.variable} ${workSans.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

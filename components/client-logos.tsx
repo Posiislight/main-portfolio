@@ -20,7 +20,7 @@ export function ClientLogos() {
                 mask: `url(${client.logo}) center / contain no-repeat`,
               }}
             />
-            <span className="text-sm font-medium">
+            <span className="text-sm" style={client.nameStyle}>
               {client.name}
               <span className="sr-only"> (opens in a new tab)</span>
             </span>

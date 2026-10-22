@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Instrument_Serif } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const serif = Instrument_Serif({
   subsets: ['latin'],
@@ -24,10 +25,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable}`}
     >
-      <body className="min-h-dvh bg-paper font-sans text-ink antialiased">
-        {children}
+      <body className="min-h-dvh bg-canvas font-sans text-fg antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   )

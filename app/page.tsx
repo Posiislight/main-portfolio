@@ -200,8 +200,8 @@ export default function Page() {
               Hi, I’m <em className="text-brand">Posi</em>.
             </h1>
             <p className="max-w-[56ch] text-base leading-relaxed text-fg-muted md:text-lg">
-              I’m a software engineer who builds AI products: assistants that answer from your own
-              documents, retrieval pipelines and agent workflows, plus the backend, cloud and interface
+              I’m a software engineer and AWS Certified Solutions Architect who builds AI products:
+              assistants that answer from your own documents, retrieval pipelines and agent workflows, plus the backend, cloud and interface
               around them. I take projects from a blank repo to real users.
             </p>
             <div className="flex flex-wrap gap-3">

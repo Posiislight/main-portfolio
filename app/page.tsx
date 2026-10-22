@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { featuredStudies, otherStudies, type CaseStudy } from "@/lib/projects"
+import { repos, type Repo } from "@/lib/repos"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Reveal } from "@/components/reveal"
@@ -130,6 +131,50 @@ function ProjectCard({ project }: { project: CaseStudy }) {
   )
 }
 
+function RepoCard({ repo }: { repo: Repo }) {
+  return (
+    <Reveal
+      as="article"
+      className="flex flex-col gap-5 rounded-2xl border border-line bg-surface p-6 shadow-soft transition-shadow duration-200 hover:shadow-lift md:p-8"
+    >
+      <div className="flex flex-col gap-2">
+        <p className="break-all text-sm text-fg-muted">Posiislight/{repo.name}</p>
+        <h3 className="font-serif text-[30px] leading-none tracking-[-0.015em] md:text-[34px]">
+          {repo.title}
+        </h3>
+      </div>
+      <p className="text-[15px] leading-relaxed text-fg-muted">{repo.summary}</p>
+      <ul className="flex flex-col gap-2 text-[15px] leading-snug text-fg-muted">
+        {repo.highlights.map((h) => (
+          <li key={h} className="flex gap-3">
+            <span className="mt-2 size-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+            {h}
+          </li>
+        ))}
+      </ul>
+      <ul className="flex flex-wrap gap-2 text-xs text-fg-muted" aria-label="Tech stack">
+        {repo.stack.map((s) => (
+          <li key={s} className="rounded-full border border-line px-3 py-1">
+            {s}
+          </li>
+        ))}
+      </ul>
+      <div className="mt-auto flex flex-wrap gap-x-6">
+        <a href={repo.github} target="_blank" rel="noreferrer" className={textLink}>
+          View on GitHub
+          <span className="sr-only"> ({repo.name}, opens in a new tab)</span>
+        </a>
+        {repo.demo && (
+          <a href={repo.demo.url} target="_blank" rel="noreferrer" className={textLink}>
+            {repo.demo.label}
+            <span className="sr-only"> ({repo.name}, opens in a new tab)</span>
+          </a>
+        )}
+      </div>
+    </Reveal>
+  )
+}
+
 export default function Page() {
   return (
     <div className="min-h-dvh">
@@ -229,6 +274,33 @@ export default function Page() {
             >
               More on GitHub
             </a>
+          </div>
+        </section>
+
+        {/* Open source */}
+        <section id="code" aria-label="Open source" className="scroll-mt-20 pb-16 md:pb-28">
+          <div className={`${wrap} flex flex-col gap-10`}>
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-6">
+              <div className="flex flex-col gap-3">
+                <h2 className={h2}>Open source</h2>
+                <p className="max-w-[52ch] text-base leading-relaxed text-fg-muted">
+                  Public repositories you can read, run and fork.
+                </p>
+              </div>
+              <a
+                href="https://github.com/Posiislight?tab=repositories"
+                target="_blank"
+                rel="noreferrer"
+                className={`${textLink} w-fit`}
+              >
+                All repositories
+              </a>
+            </div>
+            <div className="grid gap-6 lg:grid-cols-3">
+              {repos.map((r) => (
+                <RepoCard key={r.name} repo={r} />
+              ))}
+            </div>
           </div>
         </section>
 

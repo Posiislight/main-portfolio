@@ -17,21 +17,6 @@ export default {
         mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {
-        // Ledger palette
-        paper: "#f3f0e8",
-        sand: "#e6e1d4",
-        rule: "#d9d4c7",
-        ink: {
-          DEFAULT: "#17160f",
-          soft: "#3d3a32",
-          muted: "#4f4c43",
-          faint: "#5e5b52",
-        },
-        bone: {
-          DEFAULT: "#d6d1c3",
-          muted: "#b9b4a6",
-        },
-        moss: "#1e5a43",
         // Warm editorial theme tokens (values live in app/globals.css)
         canvas: "var(--canvas)",
         surface: "var(--surface)",

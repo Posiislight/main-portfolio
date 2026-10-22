@@ -28,3 +28,13 @@ Continue building your app on:
 2. Deploy your chats from the v0 interface
 3. Changes are automatically pushed to this repository
 4. Vercel deploys the latest version from this repository
+
+## Design system
+
+Warm editorial look with a dark and a light theme. Switch with the sun/moon button in the header; the first visit follows the OS setting and the choice is remembered.
+
+- **Fonts:** Instrument Serif for headings (one italic accent word per major heading), Geist for body text. Loaded with `next/font`.
+- **Tokens:** CSS variables in `app/globals.css` (`:root` is light, `.dark` is dark), mapped to Tailwind as `canvas`, `surface`, `showcase`, `fg`, `fg-muted`, `line`, `stroke`, `brand`, `brand-hover`, `brand-soft`, `logo`, `ok`, plus `shadow-soft` and `shadow-lift`.
+- **Texture:** a film-grain overlay (`body::before`) with theme-specific opacity and blend.
+- **Motion:** 0.3s scroll reveal (`components/reveal.tsx`), hidden only when JavaScript has run, and off under `prefers-reduced-motion`.
+- **Contrast:** `npm run test:contrast` checks the token pairs against WCAG AA in both themes.

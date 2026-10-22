@@ -108,15 +108,15 @@ html.js .reveal:not([data-in]) {
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-paper text-ink;
+    @apply bg-canvas text-fg;
   }
   ::selection {
-    background: #1e5a43;
-    color: #f3f0e8;
+    background: var(--brand);
+    color: var(--canvas);
   }
   a:focus-visible,
   button:focus-visible {
-    outline: 2px solid #1e5a43;
+    outline: 2px solid var(--brand);
     outline-offset: 3px;
   }
 }

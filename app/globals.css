@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Warm editorial theme tokens. Light is the :root default, dark is the .dark class. */
+:root {
+  --canvas: #f5f2ea;
+  --surface: #fbf9f4;
+  --showcase: #ebe7dd;
+  --fg: #111111;
+  --fg-muted: #5a5750;
+  --line: #dcd6c9;
+  --stroke: #cfc8b9;
+  --brand: #6b2a3a;
+  --brand-hover: #55202e;
+  --brand-soft: #ecdfe2;
+  --logo: #5f5a54;
+  --ok: #6b8560;
+  --grain-opacity: 0.7;
+  --grain-blend: multiply;
+  --shadow-soft: 0 1px 2px #1111110a;
+  --shadow-lift: 0 1px 2px #1111110d, 0 16px 32px -20px #11111140;
+  color-scheme: light;
+}
+
+.dark {
+  --canvas: #121211;
+  --surface: #191917;
+  --showcase: #1e1d1b;
+  --fg: #f2efe8;
+  --fg-muted: #a29e95;
+  --line: #2d2b28;
+  --stroke: #3a3834;
+  --brand: #d2909f;
+  --brand-hover: #dfa8b4;
+  --brand-soft: #261a1e;
+  --logo: #b5afa5;
+  --ok: #9cb38f;
+  --grain-opacity: 0.22;
+  --grain-blend: normal;
+  --shadow-soft: 0 1px 2px #0000004d;
+  --shadow-lift: 0 1px 2px #00000059, 0 16px 32px -20px #000000b3;
+  color-scheme: dark;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -9,27 +50,27 @@
 }
 
 @layer base {
-  /* shadcn/ui tokens, mapped onto the Ledger palette (light only). */
+  /* shadcn/ui variables follow the theme tokens above. */
   :root {
-    --background: 43 33% 93%;
-    --foreground: 52 21% 7%;
-    --card: 43 33% 93%;
-    --card-foreground: 52 21% 7%;
-    --popover: 43 33% 96%;
-    --popover-foreground: 52 21% 7%;
-    --primary: 52 21% 7%;
-    --primary-foreground: 43 33% 93%;
-    --secondary: 43 25% 87%;
-    --secondary-foreground: 52 21% 7%;
-    --muted: 43 25% 87%;
-    --muted-foreground: 44 8% 34%;
-    --accent: 43 25% 87%;
-    --accent-foreground: 52 21% 7%;
-    --destructive: 0 72% 42%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 43 18% 82%;
-    --input: 43 18% 82%;
-    --ring: 157 50% 23%;
+    --background: var(--canvas);
+    --foreground: var(--fg);
+    --card: var(--surface);
+    --card-foreground: var(--fg);
+    --popover: var(--surface);
+    --popover-foreground: var(--fg);
+    --primary: var(--fg);
+    --primary-foreground: var(--canvas);
+    --secondary: var(--showcase);
+    --secondary-foreground: var(--fg);
+    --muted: var(--showcase);
+    --muted-foreground: var(--fg-muted);
+    --accent: var(--brand-soft);
+    --accent-foreground: var(--fg);
+    --destructive: #c0392b;
+    --destructive-foreground: #ffffff;
+    --border: var(--line);
+    --input: var(--line);
+    --ring: var(--brand);
     --radius: 0.5rem;
   }
 

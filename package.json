@@ -7,7 +7,8 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "test:contrast": "node --test lib/contrast.test.mjs"
+    "test:contrast": "node --test lib/contrast.test.mjs",
+    "test": "node --test lib/contrast.test.mjs lib/content.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

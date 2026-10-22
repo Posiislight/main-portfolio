@@ -15,6 +15,12 @@ const pill =
 const textLink =
   "inline-flex min-h-11 items-center text-sm font-medium underline decoration-1 underline-offset-4 transition-colors hover:text-brand"
 
+const facts = [
+  { label: "Based", value: "Remote, working worldwide" },
+  { label: "Focus", value: "Backend, cloud, full stack" },
+  { label: "Currently", value: "Building Docny and Law Angels" },
+]
+
 const services = [
   {
     title: "MVPs and SaaS platforms",
@@ -145,6 +151,11 @@ export default function Page() {
               className="size-16 rounded-full object-cover"
               priority
             />
+            <p className="text-sm text-fg-muted">Adeleke Olamiposi Samuel — Full stack developer</p>
+            <p className="inline-flex items-center gap-2 text-sm text-fg-muted lg:hidden">
+              <span className="size-2 rounded-full bg-ok" aria-hidden="true" />
+              Open to freelance projects
+            </p>
             <h1 className="max-w-[18ch] font-serif text-4xl leading-[1.05] tracking-[-0.015em] md:text-6xl">
               I build the parts of a product that <em className="text-brand">have to hold up.</em>
             </h1>
@@ -161,6 +172,14 @@ export default function Page() {
                 Start a project
               </a>
             </div>
+            <dl className="mt-6 grid w-full gap-4 border-t border-line pt-6 md:grid-cols-3 md:gap-6">
+              {facts.map((f) => (
+                <div key={f.label} className="flex flex-col gap-1">
+                  <dt className="text-sm text-fg-muted">{f.label}</dt>
+                  <dd className="text-base">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 

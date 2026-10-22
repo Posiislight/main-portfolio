@@ -101,8 +101,11 @@ export function SiteHeader({ backToWork = false }: { backToWork?: boolean }) {
             )}
           </div>
         </div>
+      </header>
 
-        {open && (
+      {/* Sibling of the header, not a child: the header's backdrop-blur would make it the
+          containing block for `fixed` and shrink this overlay to the header's height. */}
+      {open && (
           <div
             id="mobile-menu"
             role="dialog"
@@ -146,7 +149,6 @@ export function SiteHeader({ backToWork = false }: { backToWork?: boolean }) {
             </div>
           </div>
         )}
-      </header>
     </>
   )
 }

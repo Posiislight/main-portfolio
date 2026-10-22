@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Reveal } from "@/components/reveal"
 import { CopyEmail } from "@/components/copy-email"
-import { StackRow } from "@/components/stack-row"
+import { ClientLogos } from "@/components/client-logos"
 import avatar from "@/public/self-avatar.jpg"
 
 const wrap = "mx-auto w-full max-w-[1200px] px-6 md:px-10"
@@ -211,9 +211,15 @@ export default function Page() {
         </section>
 
         {/* Stack */}
-        <section aria-label="Tools" className="py-16 md:py-24">
-          <Reveal className={wrap}>
-            <StackRow />
+        <section aria-labelledby="clients-heading" className="py-16 md:py-24">
+          <Reveal className={`${wrap} flex flex-col gap-8`}>
+            <div className="flex flex-col gap-2">
+              <h2 id="clients-heading" className={h2}>
+                Companies I’ve built with
+              </h2>
+              <p className="text-sm text-fg-muted">Tap a logo to visit.</p>
+            </div>
+            <ClientLogos />
           </Reveal>
         </section>
 

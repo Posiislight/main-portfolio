@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { Reveal } from "@/components/reveal"
 import { CopyEmail } from "@/components/copy-email"
 import { StackRow } from "@/components/stack-row"
-import avatar from "@/public/developer-avatar.png"
+import avatar from "@/public/self-avatar.jpg"
 
 const wrap = "mx-auto w-full max-w-[1200px] px-6 md:px-10"
 const h2 = "font-serif text-[38px] leading-[1.05] tracking-[-0.015em] md:text-5xl"
@@ -145,10 +145,10 @@ export default function Page() {
           <div className={`${wrap} flex flex-col items-start gap-6`}>
             <Image
               src={avatar}
-              alt="Portrait of Adeleke Olamiposi"
-              width={64}
-              height={64}
-              className="size-16 rounded-full object-cover"
+              alt="Adeleke Olamiposi, smiling in a navy suit and red tie"
+              width={112}
+              height={112}
+              className="size-24 rounded-full border border-line object-cover md:size-28"
               priority
             />
             <p className="text-sm text-fg-muted">Adeleke Olamiposi Samuel — Full stack developer</p>

@@ -211,14 +211,11 @@ export default function Page() {
         </section>
 
         {/* Stack */}
-        <section aria-labelledby="clients-heading" className="py-16 md:py-24">
-          <Reveal className={`${wrap} flex flex-col gap-8`}>
-            <div className="flex flex-col gap-2">
-              <h2 id="clients-heading" className={h2}>
-                Companies I’ve built with
-              </h2>
-              <p className="text-sm text-fg-muted">Tap a logo to visit.</p>
-            </div>
+        <section aria-labelledby="clients-heading" className="py-12 md:py-16">
+          <Reveal className={`${wrap} flex flex-col gap-6`}>
+            <h2 id="clients-heading" className="text-sm text-fg-muted">
+              Companies I’ve built with. Tap a logo to visit.
+            </h2>
             <ClientLogos />
           </Reveal>
         </section>

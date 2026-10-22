@@ -200,9 +200,9 @@ export default function Page() {
               Hi, I’m <em className="text-brand">Posi</em>.
             </h1>
             <p className="max-w-[56ch] text-base leading-relaxed text-fg-muted md:text-lg">
-              I’m a full stack developer. Backend services, infrastructure and the system design
-              calls that decide whether a product survives real traffic, with React and Next.js
-              interfaces on top that load fast and stay out of the way.
+              I’m a full stack developer. I build the backend, APIs and cloud infrastructure behind a
+              product, plus the React and Next.js interface on top, and I take projects from a blank
+              repo to real users.
             </p>
             <a href="#contact" className={`${pill} bg-fg text-canvas hover:bg-brand`}>
               Contact me

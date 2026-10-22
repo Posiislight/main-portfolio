@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, Github, Linkedin, Mail, Menu, X } from "lucide-react"
+import { ArrowLeft, Menu, X } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const links = [
@@ -10,12 +10,6 @@ const links = [
   { href: "/#about", label: "About" },
   { href: "/#services", label: "Services" },
   { href: "/#contact", label: "Contact" },
-]
-
-const socials = [
-  { href: "https://github.com/Posiislight", label: "GitHub", Icon: Github, external: true },
-  { href: "https://www.linkedin.com/in/adeleke-olamiposi", label: "LinkedIn", Icon: Linkedin, external: true },
-  { href: "mailto:adelekeolamiposi@gmail.com", label: "Email", Icon: Mail, external: false },
 ]
 
 const container = "mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6 md:h-[72px] md:px-10"
@@ -82,23 +76,6 @@ export function SiteHeader({ backToWork = false }: { backToWork?: boolean }) {
                   </Link>
                 ))}
               </nav>
-            )}
-
-            {!backToWork && (
-              <div className="mx-2 hidden items-center lg:flex">
-                {socials.map(({ href, label, Icon, external }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    title={label}
-                    {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-                    className="inline-flex size-11 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-brand-soft hover:text-fg"
-                  >
-                    <Icon className="size-5" aria-hidden="true" />
-                  </a>
-                ))}
-              </div>
             )}
 
             <ThemeToggle />

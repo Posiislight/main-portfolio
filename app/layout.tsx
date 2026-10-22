@@ -28,6 +28,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body className="min-h-dvh bg-canvas font-sans text-fg antialiased">
         <ThemeProvider>{children}</ThemeProvider>
       </body>

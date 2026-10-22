@@ -16,13 +16,6 @@ const pill =
 const textLink =
   "inline-flex min-h-11 items-center text-sm font-medium underline decoration-1 underline-offset-4 transition-colors hover:text-brand"
 
-const facts = [
-  { label: "Based", value: "Remote, working worldwide" },
-  { label: "Focus", value: "AI products, backend, cloud" },
-  { label: "Certified", value: "AWS Solutions Architect – Associate" },
-  { label: "Currently", value: "Building Docny and Law Angels" },
-]
-
 const services = [
   {
     title: "AI features and agents",
@@ -318,15 +311,6 @@ export default function Page() {
                 logs that cut average resolution time by 40%. I’m also an AWS Certified Solutions
                 Architect, which is why my LLM services come with queues, metrics and cost tracking.
               </p>
-              <p className="pt-4 text-sm text-fg-muted">Adeleke Olamiposi Samuel — AI and full stack engineer</p>
-              <dl className="grid gap-4 border-t border-line pt-6 sm:grid-cols-3 sm:gap-6">
-                {facts.map((f) => (
-                  <div key={f.label} className="flex flex-col gap-1">
-                    <dt className="text-sm text-fg-muted">{f.label}</dt>
-                    <dd className="text-base">{f.value}</dd>
-                  </div>
-                ))}
-              </dl>
             </div>
           </Reveal>
         </section>

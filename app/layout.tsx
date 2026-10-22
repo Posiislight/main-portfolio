@@ -18,8 +18,8 @@ const fraunces = Fraunces({ subsets: ['latin'], weight: '600', variable: '--font
 const workSans = Work_Sans({ subsets: ['latin'], weight: '500', variable: '--font-work-sans' })
 
 export const metadata: Metadata = {
-  title: 'Adeleke Olamiposi Samuel | Full Stack Developer',
-  description: 'Full stack developer building the parts of a product that have to hold up: backend services, infrastructure and system design, with fast React and Next.js interfaces on top.',
+  title: 'Adeleke Olamiposi Samuel | AI and Full Stack Engineer',
+  description: 'Software engineer building AI products: assistants that answer from your own documents, retrieval pipelines and agent workflows, with the backend, cloud and React interface around them.',
 }
 
 export default function RootLayout({

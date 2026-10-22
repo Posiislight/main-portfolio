@@ -18,18 +18,18 @@ const textLink =
 
 const facts = [
   { label: "Based", value: "Remote, working worldwide" },
-  { label: "Focus", value: "Backend, cloud, full stack" },
+  { label: "Focus", value: "AI products, backend, cloud" },
   { label: "Currently", value: "Building Docny and Law Angels" },
 ]
 
 const services = [
   {
-    title: "MVPs and SaaS platforms",
-    body: "From idea to production: auth, payments, dashboards and AI features. Everything a product needs to take real users on day one.",
+    title: "AI features and agents",
+    body: "Assistants that answer from your own documents, retrieval over your data, and agent workflows with tests, limits and human approval built in.",
   },
   {
-    title: "Corporate and marketing sites",
-    body: "Fast, credible websites that carry a brand's weight. Built to load instantly, rank well and turn visitors into enquiries.",
+    title: "MVPs and SaaS platforms",
+    body: "From idea to production: auth, payments, dashboards and AI features. Everything a product needs to take real users on day one.",
   },
   {
     title: "Platforms and integrations",
@@ -200,13 +200,22 @@ export default function Page() {
               Hi, I’m <em className="text-brand">Posi</em>.
             </h1>
             <p className="max-w-[56ch] text-base leading-relaxed text-fg-muted md:text-lg">
-              I’m a full stack developer. I build the backend, APIs and cloud infrastructure behind a
-              product, plus the React and Next.js interface on top, and I take projects from a blank
-              repo to real users.
+              I’m a software engineer who builds AI products: assistants that answer from your own
+              documents, retrieval pipelines and agent workflows, plus the backend, cloud and interface
+              around them. I take projects from a blank repo to real users.
             </p>
-            <a href="#contact" className={`${pill} bg-fg text-canvas hover:bg-brand`}>
-              Contact me
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a href="#contact" className={`${pill} bg-fg text-canvas hover:bg-brand`}>
+                Contact me
+              </a>
+              <a
+                href="/Adeleke_Olamiposi_Resume.pdf"
+                download
+                className={`${pill} border border-stroke hover:border-brand hover:text-brand`}
+              >
+                Resume
+              </a>
+            </div>
           </div>
         </section>
 
@@ -302,7 +311,13 @@ export default function Page() {
                 I&apos;m Posi. Most of my work is for founders and teams who need one person to take a
                 product from a blank repo to real users, and still be around when it has to scale.
               </p>
-              <p className="pt-4 text-sm text-fg-muted">Adeleke Olamiposi Samuel — Full stack developer</p>
+              <p className="text-base leading-relaxed text-fg-muted">
+                More and more of that work is AI. At Docny I shipped an assistant that answers readers’
+                questions from published documentation. At i4nnova I built an embeddings search over issue
+                logs that cut average resolution time by 40%. I’m also an AWS Certified Solutions
+                Architect, which is why my LLM services come with queues, metrics and cost tracking.
+              </p>
+              <p className="pt-4 text-sm text-fg-muted">Adeleke Olamiposi Samuel — AI and full stack engineer</p>
               <dl className="grid gap-4 border-t border-line pt-6 sm:grid-cols-3 sm:gap-6">
                 {facts.map((f) => (
                   <div key={f.label} className="flex flex-col gap-1">

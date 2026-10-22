@@ -19,6 +19,7 @@ const textLink =
 const facts = [
   { label: "Based", value: "Remote, working worldwide" },
   { label: "Focus", value: "AI products, backend, cloud" },
+  { label: "Certified", value: "AWS Solutions Architect – Associate" },
   { label: "Currently", value: "Building Docny and Law Angels" },
 ]
 

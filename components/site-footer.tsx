@@ -13,6 +13,14 @@ export function SiteFooter() {
             GitHub
           </a>
           <a
+            href="https://www.linkedin.com/in/adeleke-olamiposi"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center transition-colors hover:text-brand"
+          >
+            LinkedIn
+          </a>
+          <a
             href="mailto:adelekeolamiposi@gmail.com"
             className="inline-flex min-h-11 items-center transition-colors hover:text-brand"
           >

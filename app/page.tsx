@@ -363,14 +363,24 @@ export default function Page() {
             <p className="max-w-[44ch] text-base leading-relaxed text-fg-muted">
               Projects, roles or a half-formed idea. I reply within one to two business days.
             </p>
-            <a
-              href="https://github.com/Posiislight"
-              target="_blank"
-              rel="noreferrer"
-              className={`${textLink} w-fit`}
-            >
-              GitHub
-            </a>
+            <div className="flex gap-6">
+              <a
+                href="https://github.com/Posiislight"
+                target="_blank"
+                rel="noreferrer"
+                className={`${textLink} w-fit`}
+              >
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/adeleke-olamiposi"
+                target="_blank"
+                rel="noreferrer"
+                className={`${textLink} w-fit`}
+              >
+                LinkedIn
+              </a>
+            </div>
           </Reveal>
         </section>
       </main>

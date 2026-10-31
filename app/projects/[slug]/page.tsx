@@ -42,7 +42,8 @@ export default async function CaseStudyPage({
   const host = new URL(cs.demo).host
 
   const meta = [
-    { label: "Role", value: "Full stack, end to end" },
+    { label: "Role", value: cs.role },
+    { label: "Stack", value: cs.stack.join(", ") },
     { label: "Sector", value: cs.category },
     { label: "Status", value: cs.status },
   ]
@@ -106,7 +107,7 @@ export default async function CaseStudyPage({
         <section aria-labelledby="problem-heading">
           <Reveal className={`${wrap} flex flex-col gap-4 pt-16 md:grid md:grid-cols-12 md:gap-x-8 md:pt-24`}>
             <h2 id="problem-heading" className={`${sectionLabel} font-normal`}>
-              The problem
+              Context
             </h2>
             <div className="flex flex-col gap-4 md:col-span-8 md:col-start-4 md:gap-6">
               <p className="font-serif text-[28px] leading-[1.18] tracking-[-0.01em] md:text-[38px] md:leading-[1.15]">
@@ -121,7 +122,7 @@ export default async function CaseStudyPage({
         <section aria-labelledby="solution-heading">
           <Reveal className={`${wrap} flex flex-col gap-4 pt-14 md:grid md:grid-cols-12 md:gap-x-8 md:pt-20`}>
             <h2 id="solution-heading" className={`${sectionLabel} font-normal`}>
-              What I built
+              What I built and how
             </h2>
             <p className="text-base leading-[1.7] text-fg-muted md:col-span-8 md:col-start-4 md:text-lg">
               {cs.solution}
@@ -130,7 +131,7 @@ export default async function CaseStudyPage({
         </section>
 
         {/* Features */}
-        <section aria-label="Key features">
+        <section aria-label="Engineering contributions">
           <ul className={`${wrap} grid gap-4 pt-12 md:grid-cols-3 md:gap-6 md:pt-20`}>
             {cs.features.map((f, i) => (
               <li key={f}>

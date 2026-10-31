@@ -40,6 +40,18 @@ function Tags({ project }: { project: CaseStudy }) {
   )
 }
 
+function Stack({ project }: { project: CaseStudy }) {
+  return (
+    <ul className="flex flex-wrap gap-2 text-xs text-fg-muted" aria-label="Tech stack">
+      {project.stack.map((s) => (
+        <li key={s} className="rounded-full border border-line px-3 py-1">
+          {s}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function FeaturedProject({ project, index }: { project: CaseStudy; index: number }) {
   return (
     <Reveal as="article" className="overflow-hidden rounded-2xl border border-line bg-surface shadow-soft transition-shadow duration-200 hover:shadow-lift">
@@ -67,6 +79,7 @@ function FeaturedProject({ project, index }: { project: CaseStudy; index: number
           <h3 className="font-serif text-[34px] leading-none tracking-[-0.015em] md:text-[44px]">
             {project.title}
           </h3>
+          <p className="text-[15px] text-fg-muted">{project.role}</p>
         </div>
         <div className="flex flex-col gap-5 md:col-span-7">
           <p className="text-base leading-relaxed text-fg-muted">{project.summary}</p>
@@ -78,6 +91,7 @@ function FeaturedProject({ project, index }: { project: CaseStudy; index: number
               </li>
             ))}
           </ul>
+          <Stack project={project} />
           <div className="flex gap-6">
             <Link href={`/projects/${project.slug}`} className={textLink}>
               Read the case study
@@ -119,7 +133,11 @@ function ProjectCard({ project }: { project: CaseStudy }) {
             {project.title}
           </Link>
         </h3>
+        <p className="text-[15px] text-fg-muted">{project.role}</p>
         <p className="text-[15px] leading-relaxed text-fg-muted">{project.summary}</p>
+        <div className="mt-auto">
+          <Stack project={project} />
+        </div>
       </div>
     </Reveal>
   )
@@ -194,9 +212,10 @@ export default function Page() {
               Hi, I’m <em className="text-brand">Posi</em>.
             </h1>
             <p className="max-w-[56ch] text-base leading-relaxed text-fg-muted md:text-lg">
-              I’m a software engineer and AWS Certified Solutions Architect who builds AI products:
-              assistants that answer from your own documents, retrieval pipelines and agent workflows, plus the backend, cloud and interface
-              around them. I take projects from a blank repo to real users.
+              I’m a software engineer and AWS Certified Solutions Architect. I build the backend and
+              cloud systems behind products: APIs, payments and webhooks, queues, retrieval over your
+              own data and agent workflows, with the React and Next.js interface on top. I take
+              projects from a blank repo to real users, and the work below shows what I built on each.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#contact" className={`${pill} bg-fg text-canvas hover:bg-brand`}>

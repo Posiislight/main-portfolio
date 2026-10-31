@@ -4,7 +4,7 @@ export type Repo = {
   title: string
   /** One or two sentences for the card. */
   summary: string
-  /** Short, factual points taken from the repository's README. */
+  /** Short, factual points about the engineering, checked against the code. */
   highlights: string[]
   stack: string[]
   github: string
@@ -42,18 +42,17 @@ export const repos: Repo[] = [
     github: "https://github.com/Posiislight/agent-workspace",
   },
   {
-    name: "lagos-racer",
-    title: "Lagos Racer",
+    name: "gremlin",
+    title: "Gremlin",
     summary:
-      "A comedic kart racer for the browser: okadas, kekes, danfos and BRTs racing along the real Ojuelegba Road in Lagos.",
+      "Browser-agent QA built at the OpenFire hackathon. An LLM drives Playwright through a web app, deterministic oracles detect the bugs, and each finding comes with a replay and a fix handoff for a coding agent.",
     highlights: [
-      "Track layout derived from OpenStreetMap data, with Rapier physics in React Three Fiber",
-      "Installable as an app and playable on a phone",
-      "Online multiplayer through a room server",
-      "A headless test races several tabs and passes only if every tab shows identical standings",
+      "Fastify REST API and an MCP server with 11 tools, with BullMQ workers and Postgres (Drizzle) behind them",
+      "The model navigates and deterministic oracles detect: crashes, console errors, failed requests. Each agent is bounded by steps, time and tokens, and stops after repeated no-ops",
+      "A Chromium-level request policy blocks payment hosts, off-site navigation and writes in read-only mode; credentials are placeholders the model never sees",
+      "Autofix opens a PR only after the tests are not weakened, the repro passes and a separate review pass approves",
     ],
-    stack: ["TypeScript", "React Three Fiber", "Rapier", "PWA"],
-    github: "https://github.com/Posiislight/lagos-racer",
-    demo: { url: "https://lagos-racer.vercel.app", label: "Play it" },
+    stack: ["TypeScript", "Playwright", "Fastify", "BullMQ", "Postgres", "Next.js"],
+    github: "https://github.com/Posiislight/gremlin/tree/build/m1-m2",
   },
 ]

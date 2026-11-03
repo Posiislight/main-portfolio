@@ -12,7 +12,16 @@ export type Repo = {
   /** Short screen recording shown at the top of the card. */
   video?: { src: string; label: string; /** width / height, when not 16:9 */ aspect?: number }
   /** Images shown as a slideshow at the top of the card when there is no video. */
-  images?: { src: string; alt: string; caption: string; width: number; height: number }[]
+  images?: {
+    /** Small file for the card. */
+    src: string
+    /** Larger file, loaded only when the image is enlarged. */
+    full: string
+    alt: string
+    caption: string
+    width: number
+    height: number
+  }[]
 }
 
 // Order here is the order on the site.
@@ -32,25 +41,28 @@ export const repos: Repo[] = [
     github: "https://github.com/Posiislight/bedrock-rag-platform",
     images: [
       {
-        src: "/bedrock-rag-architecture.png",
+        src: "/bedrock-rag-architecture.webp",
+        full: "/bedrock-rag-architecture-full.webp",
         alt: "Architecture diagram: a FastAPI service on EC2 calls Amazon Bedrock, reads documents and the vector index from S3, runs async jobs through SQS with a dead-letter queue and DynamoDB job state, and reports metrics to CloudWatch",
         caption: "Architecture",
-        width: 3200,
-        height: 2008,
+        width: 2400,
+        height: 1506,
       },
       {
-        src: "/bedrock-rag-request-flows.png",
+        src: "/bedrock-rag-request-flows.webp",
+        full: "/bedrock-rag-request-flows-full.webp",
         alt: "Two request flows: the seven steps of a synchronous cited RAG query, and the async job states queued, running, retrying, failed and dead-letter queue",
         caption: "Request flows",
-        width: 3200,
-        height: 2035,
+        width: 2400,
+        height: 1526,
       },
       {
-        src: "/bedrock-rag-sample-session.png",
+        src: "/bedrock-rag-sample-session.webp",
+        full: "/bedrock-rag-sample-session-full.webp",
         alt: "Sample terminal session showing ingest, a cited RAG query, and submitting and polling an async job. Output is illustrative, not captured from a deployed run",
         caption: "",
-        width: 3200,
-        height: 2356,
+        width: 2400,
+        height: 1767,
       },
     ],
   },

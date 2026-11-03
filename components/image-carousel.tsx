@@ -5,7 +5,7 @@ import Image from "next/image"
 import * as Dialog from "@radix-ui/react-dialog"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
 
-export type Slide = { src: string; alt: string; caption: string; width: number; height: number }
+export type Slide = { src: string; full: string; alt: string; caption: string; width: number; height: number }
 
 const focusRing = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
 const arrow = `absolute top-1/2 z-10 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-soft transition-colors hover:bg-black/80 ${focusRing}`
@@ -81,7 +81,7 @@ export function ImageCarousel({ slides, label }: { slides: Slide[]; label: strin
           <Dialog.Description className="sr-only">{label}. Use the arrow keys to switch images, Escape to close.</Dialog.Description>
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#121211] shadow-lift">
             <Image
-              src={slide.src}
+              src={slide.full}
               alt={slide.alt}
               width={slide.width}
               height={slide.height}

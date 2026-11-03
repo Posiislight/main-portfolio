@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { Reveal } from "@/components/reveal"
 import { CopyEmail } from "@/components/copy-email"
 import { ClientLogos } from "@/components/client-logos"
+import { ImageCarousel } from "@/components/image-carousel"
 import avatar from "@/public/self-avatar.jpg"
 
 const wrap = "mx-auto w-full max-w-[1200px] px-6 md:px-10"
@@ -149,6 +150,21 @@ function RepoCard({ repo }: { repo: Repo }) {
       as="article"
       className="flex flex-col gap-5 rounded-2xl border border-line bg-surface p-6 shadow-soft transition-shadow duration-200 hover:shadow-lift md:p-8"
     >
+      {repo.video && (
+        <video
+          src={repo.video.src}
+          aria-label={repo.video.label}
+          style={repo.video.aspect ? { aspectRatio: repo.video.aspect } : undefined}
+          controls
+          muted
+          playsInline
+          preload="metadata"
+          className="aspect-video w-full rounded-xl border border-line bg-showcase object-cover"
+        />
+      )}
+      {!repo.video && repo.images && (
+        <ImageCarousel slides={repo.images} label={`${repo.title} images`} />
+      )}
       <div className="flex flex-col gap-2">
         <p className="break-all text-sm text-fg-muted">Posiislight/{repo.name}</p>
         <h3 className="font-serif text-[30px] leading-none tracking-[-0.015em] md:text-[34px]">

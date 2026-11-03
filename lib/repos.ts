@@ -9,6 +9,10 @@ export type Repo = {
   stack: string[]
   github: string
   demo?: { url: string; label: string }
+  /** Short screen recording shown at the top of the card. */
+  video?: { src: string; label: string; /** width / height, when not 16:9 */ aspect?: number }
+  /** Images shown as a slideshow at the top of the card when there is no video. */
+  images?: { src: string; alt: string; caption: string; width: number; height: number }[]
 }
 
 // Order here is the order on the site.
@@ -26,6 +30,29 @@ export const repos: Repo[] = [
     ],
     stack: ["Python", "FastAPI", "Amazon Bedrock", "CloudFormation", "SQS", "DynamoDB"],
     github: "https://github.com/Posiislight/bedrock-rag-platform",
+    images: [
+      {
+        src: "/bedrock-rag-architecture.png",
+        alt: "Architecture diagram: a FastAPI service on EC2 calls Amazon Bedrock, reads documents and the vector index from S3, runs async jobs through SQS with a dead-letter queue and DynamoDB job state, and reports metrics to CloudWatch",
+        caption: "Architecture",
+        width: 3200,
+        height: 2008,
+      },
+      {
+        src: "/bedrock-rag-request-flows.png",
+        alt: "Two request flows: the seven steps of a synchronous cited RAG query, and the async job states queued, running, retrying, failed and dead-letter queue",
+        caption: "Request flows",
+        width: 3200,
+        height: 2035,
+      },
+      {
+        src: "/bedrock-rag-sample-session.png",
+        alt: "Sample terminal session showing ingest, a cited RAG query, and submitting and polling an async job. Output is illustrative, not captured from a deployed run",
+        caption: "",
+        width: 3200,
+        height: 2356,
+      },
+    ],
   },
   {
     name: "agent-workspace",
@@ -40,6 +67,11 @@ export const repos: Repo[] = [
     ],
     stack: ["Python", "FastAPI", "LangGraph", "React", "Postgres", "Redis"],
     github: "https://github.com/Posiislight/agent-workspace",
+    video: {
+      src: "/agent-workspace-demo.mp4#t=2",
+      label: "Agent workspace demo: a task going through coding, testing, review and approval to a GitHub pull request",
+      aspect: 1908 / 894,
+    },
   },
   {
     name: "gremlin",
@@ -54,5 +86,6 @@ export const repos: Repo[] = [
     ],
     stack: ["TypeScript", "Playwright", "Fastify", "BullMQ", "Postgres", "Next.js"],
     github: "https://github.com/Posiislight/gremlin/tree/build/m1-m2",
+    video: { src: "/gremlin-demo.mp4#t=2", label: "Gremlin demo: an agent testing a web app and reporting bugs" },
   },
 ]

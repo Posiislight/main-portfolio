@@ -14,7 +14,21 @@ export function ImageCarousel({ slides, label }: { slides: Slide[]; label: strin
   const [i, setI] = useState(0)
   const [open, setOpen] = useState(false)
   const last = slides.length - 1
-  const go = (n: number) => setI(n < 0 ? last : n > last ? 0 : n)
+  // Only slide 0 is requested up front (lazily, when the card nears the viewport).
+  // Each slide that finishes loading queues the next one in the background.
+  const [ready, setReady] = useState<number[]>([0])
+  const mark = (n: number) => setReady((r) => (r.includes(n) ? r : [...r, n]))
+  const loadNextLater = (n: number) => {
+    if (n >= last) return
+    const run = () => mark(n + 1)
+    if ("requestIdleCallback" in window) window.requestIdleCallback(run, { timeout: 2000 })
+    else setTimeout(run, 300)
+  }
+  const go = (n: number) => {
+    const t = n < 0 ? last : n > last ? 0 : n
+    mark(t)
+    setI(t)
+  }
   const onKey = (e: KeyboardEvent) => {
     if (e.key === "ArrowLeft") go(i - 1)
     if (e.key === "ArrowRight") go(i + 1)
@@ -31,20 +45,24 @@ export function ImageCarousel({ slides, label }: { slides: Slide[]; label: strin
         className="flex flex-col gap-3"
       >
         <div className="relative aspect-[3200/2356] w-full overflow-hidden rounded-xl border border-line bg-[#121211]">
-          {slides.map((s, n) => (
-            <Image
-              key={s.src}
-              src={s.src}
-              alt={s.alt}
-              width={s.width}
-              height={s.height}
-              sizes="(min-width: 1200px) 560px, 100vw"
-              aria-hidden={n !== i}
-              className={`absolute inset-0 size-full object-contain transition-opacity duration-300 motion-reduce:transition-none ${
-                n === i ? "opacity-100" : "pointer-events-none opacity-0"
-              }`}
-            />
-          ))}
+          {slides.map((s, n) =>
+            ready.includes(n) ? (
+              <Image
+                key={s.src}
+                src={s.src}
+                alt={s.alt}
+                width={s.width}
+                height={s.height}
+                sizes="(min-width: 1200px) 560px, 100vw"
+                loading="lazy"
+                onLoad={() => loadNextLater(n)}
+                aria-hidden={n !== i}
+                className={`absolute inset-0 size-full object-contain transition-opacity duration-300 motion-reduce:transition-none ${
+                  n === i ? "opacity-100" : "pointer-events-none opacity-0"
+                }`}
+              />
+            ) : null,
+          )}
           <Dialog.Trigger
             aria-label={`Enlarge image ${i + 1} of ${slides.length}`}
             className={`absolute inset-0 cursor-zoom-in rounded-xl ${focusRing}`}
